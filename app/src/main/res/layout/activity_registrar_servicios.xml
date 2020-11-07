@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrarServicios">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Registrar servicios"
+            android:textSize="25dp" />
+
+        <EditText
+            android:id="@+id/txtNit_veterinaria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nit veterinaria"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/txtNombreVeterinaria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nombre veterinaria"
+            android:enabled="false"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/btnBuscarve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Buscar veterinaria" />
+
+        <EditText
+            android:id="@+id/txtNombreServico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nombre servico"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/txtDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Descripcion servico"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/button20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="RegistrarServicio"
+            android:text="Registrar servicio" />
+
+        <Button
+            android:id="@+id/button21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="BuscarServicios"
+            android:text="buscar servico" />
+
+        <Button
+            android:id="@+id/button23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="ActualizarServicio"
+            android:text="modificar servico" />
+
+        <Button
+            android:id="@+id/button22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="EliminarServicio"
+            android:text="eliminar servico" />
+
+        <Button
+            android:id="@+id/button37"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="Volver"
+            android:text="Volver" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
