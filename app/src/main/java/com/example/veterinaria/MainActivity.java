@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    ProgressBar carga;
+
     RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
     ClsVeterinaria clsVeterinaria;

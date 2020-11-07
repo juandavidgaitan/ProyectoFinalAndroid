@@ -39,6 +39,7 @@
             android:id="@+id/button29"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#FFEB3B"
             android:onClick="GestionarVeterinario"
             android:text="Gestionar veterinario" />
 
