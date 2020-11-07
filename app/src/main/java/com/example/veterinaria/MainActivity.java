@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    RequestQueue request;
+  
     JsonObjectRequest jsonObjectRequest;
     ClsVeterinaria clsVeterinaria;
     StringRequest stringRequest;
