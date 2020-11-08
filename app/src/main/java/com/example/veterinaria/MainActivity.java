@@ -31,8 +31,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    ProgressBar carga;
 
-  
+    RequestQueue request;
+
     JsonObjectRequest jsonObjectRequest;
     ClsVeterinaria clsVeterinaria;
     StringRequest stringRequest;
@@ -50,103 +52,41 @@ public class MainActivity extends AppCompatActivity {
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Ingresa("http://192.168.1.13/veterinaria/wsJSONValidarCliente.php");
-                IngresaVe("http://192.168.1.13/veterinaria/wsJSONValidarVeterinaria.php");
-
+                valirdarCliente("http://192.168.1.13/veterinaria/wsJSONValidarCliente.php");
             }
         });
-        }
 
 
+    }
 
-
-    private void Ingresa(String URL) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+    private void valirdarCliente(String URL){
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(!response.isEmpty()){
-                    Intent intent = new Intent(getApplicationContext(),MenuCliente.class);
-                    startActivity(intent);
-                }else if(!response.isEmpty()) {
-                    Intent intent = new Intent(getApplicationContext(), MenuVeterinaria.class);
-                    startActivity(intent);
-                } /*else
-
-                    Toast.makeText(MainActivity.this, "Usuario o contraseña incorretas ",Toast.LENGTH_SHORT).show();*/
+               if(!response.isEmpty()){
+                   Intent intent=new Intent(getApplicationContext(),MenuCliente.class);
+                   startActivity(intent);
+               }else
+                   Toast.makeText(MainActivity.this,"Usuario no encontrado",Toast.LENGTH_SHORT).show();
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, error.toString(),Toast.LENGTH_SHORT).show();
-
-
 
             }
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> parametros=new HashMap<>();
+                Map<String,String> parametros=new HashMap<String, String>();
                 parametros.put("usuario",txtUsuario.getText().toString());
                 parametros.put("contrasena",txtContrasena.getText().toString());
-
-                return parametros;
+                return  parametros;
             }
         };
-
         RequestQueue requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-
-
-
-
-
-
-
     }
-
-    private void IngresaVe(String URL) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                 if(!response.isEmpty()) {
-                    Intent intent = new Intent(getApplicationContext(), MenuVeterinaria.class);
-                    startActivity(intent);
-                } /*else
-
-                    Toast.makeText(MainActivity.this, "Usuario o contraseña incorretas ",Toast.LENGTH_SHORT).show();*/
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, error.toString(),Toast.LENGTH_SHORT).show();
-
-
-
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> parametros=new HashMap<>();
-                parametros.put("usuario",txtUsuario.getText().toString());
-                parametros.put("contrasena",txtContrasena.getText().toString());
-
-                return parametros;
-            }
-        };
-
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-
-
-
-
-
-
-
-    }
-
 
 
 
