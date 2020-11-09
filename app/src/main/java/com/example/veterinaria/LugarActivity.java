@@ -73,7 +73,7 @@ public class LugarActivity extends AppCompatActivity implements GoogleMap.OnMark
         if(!Nombre.equals("")&&!descripciones.equals("")){
                 if(gestionLugar.guardarMarca(Nombre,descripciones)){
                     Toast.makeText(getApplicationContext(),"Registro exitoso!!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(this, com.example.arquelogy.MapsActivity.class);
+                    Intent intent = new Intent(this, MapsActivity.class);
 
                     startActivity(intent);
                 }else{

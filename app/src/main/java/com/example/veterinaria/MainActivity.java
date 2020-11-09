@@ -29,15 +29,10 @@ public class MainActivity extends AppCompatActivity {
     EditText txtContrasena;
     Button btnIngresar;
 
-<<<<<<< HEAD
-=======
-
 
     ProgressBar carga;
 
     RequestQueue request;
-
->>>>>>> 1e715b0332ca08237916b67778bf8d8ae89747bd
     JsonObjectRequest jsonObjectRequest;
     ClsVeterinaria clsVeterinaria;
     StringRequest stringRequest;
@@ -53,25 +48,23 @@ public class MainActivity extends AppCompatActivity {
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
+
                 Ingresa("http://172.20.10.3/veterinaria/wsJSONValidarCliente.php");
-                IngresaVe("http://172.20.10.3/veterinaria/wsJSONValidarVeterinaria.php");
+                Ingresa("http://172.20.10.3/veterinaria/wsJSONValidarVeterinaria.php");
 
             }
         });
-        }
-
-
+    }
 
 
     private void Ingresa(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(!response.isEmpty()){
-                    Intent intent = new Intent(getApplicationContext(),MenuCliente.class);
+                if (!response.isEmpty()) {
+                    Intent intent = new Intent(getApplicationContext(), MenuCliente.class);
                     startActivity(intent);
-                }else if(!response.isEmpty()) {
+                } else if (!response.isEmpty()) {
                     Intent intent = new Intent(getApplicationContext(), MenuVeterinaria.class);
                     startActivity(intent);
                 } /*else
@@ -82,78 +75,68 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, error.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> parametros=new HashMap<>();
-                parametros.put("usuario",txtUsuario.getText().toString());
-                parametros.put("contrasena",txtContrasena.getText().toString());
+                Map<String, String> parametros = new HashMap<>();
+                parametros.put("usuario", txtUsuario.getText().toString());
+                parametros.put("contrasena", txtContrasena.getText().toString());
 
                 return parametros;
             }
         };
 
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
-=======
-                valirdarCliente("http://192.168.1.13/veterinaria/wsJSONValidarCliente.php");
-            }
-        });
+
+        valirdarCliente("http://172.20.10.3/veterinaria/wsJSONValidarCliente.php");
+
+    };
 
 
->>>>>>> 1e715b0332ca08237916b67778bf8d8ae89747bd
-    }
-
-    private void valirdarCliente(String URL){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+    private void valirdarCliente(String URL) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-               if(!response.isEmpty()){
-                   Intent intent=new Intent(getApplicationContext(),MenuCliente.class);
-                   startActivity(intent);
-               }else
-                   Toast.makeText(MainActivity.this,"Usuario no encontrado",Toast.LENGTH_SHORT).show();
+                if (!response.isEmpty()) {
+                    Intent intent = new Intent(getApplicationContext(), MenuCliente.class);
+                    startActivity(intent);
+                } else
+                    Toast.makeText(MainActivity.this, "Usuario no encontrado", Toast.LENGTH_SHORT).show();
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-<<<<<<< HEAD
-                Toast.makeText(MainActivity.this, error.toString(),Toast.LENGTH_SHORT).show();
-=======
 
->>>>>>> 1e715b0332ca08237916b67778bf8d8ae89747bd
+                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> parametros=new HashMap<String, String>();
-                parametros.put("usuario",txtUsuario.getText().toString());
-                parametros.put("contrasena",txtContrasena.getText().toString());
-                return  parametros;
+                Map<String, String> parametros = new HashMap<String, String>();
+                parametros.put("usuario", txtUsuario.getText().toString());
+                parametros.put("contrasena", txtContrasena.getText().toString());
+                return parametros;
             }
         };
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-<<<<<<< HEAD
+
 
     }
 
-=======
-    }
 
-
-
->>>>>>> 1e715b0332ca08237916b67778bf8d8ae89747bd
     public void RegistarVeterinaria(View view) {
 
         Intent intent = new Intent(this, RegistrarVeterinaria.class);
         startActivity(intent);
 
     }
+
     public void RegistarCliente(View view) {
 
         Intent intent = new Intent(this, RegistrarCliente.class);
