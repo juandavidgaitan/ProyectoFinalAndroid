@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Veterinaria</string>
+<<<<<<< HEAD
     <string name="title_activity_maps">Map</string>
+=======
+
+>>>>>>> 1e715b0332ca08237916b67778bf8d8ae89747bd
 </resources>
