@@ -65,7 +65,7 @@ public class BuscarCliente extends AppCompatActivity implements Response.Listene
         request = Volley.newRequestQueue(getBaseContext());
     }
     public void BuscarClientes(View view) {
-        String url = "http://172.20.10.3/veterinaria/wsJSONBuscarClienteTodo.php?cedula=" + txtCedula.getText().toString();
+        String url = "http://192.168.1.13/veterinaria/wsJSONBuscarClienteTodo.php?cedula=" + txtCedula.getText().toString();
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         request.add(jsonObjectRequest);
 

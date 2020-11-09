@@ -48,7 +48,7 @@ public class RegistrarVeterinaria extends AppCompatActivity {
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RegistrarVeterinaria("http://172.20.10.3/veterinaria/RegistrarVeterinaria.php");
+                RegistrarVeterinaria("http://192.168.1.13/veterinaria/RegistrarVeterinaria.php");
             }
         });
 

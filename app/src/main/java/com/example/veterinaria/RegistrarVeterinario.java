@@ -56,7 +56,7 @@ public class RegistrarVeterinario extends AppCompatActivity implements Response.
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarVete("http://172.20.10.3/veterinaria/BuscarVeterinaria.php?nit_veterinaria=" + txtNit_Veterinaria.getText()+"");
+                BuscarVete("http://192.168.1.13/veterinaria/BuscarVeterinaria.php?nit_veterinaria=" + txtNit_Veterinaria.getText()+"");
             }
         });
     }
@@ -99,7 +99,7 @@ public class RegistrarVeterinario extends AppCompatActivity implements Response.
 
     }
     public void RegistrarVeterinarios(View view) {
-        String url = "http://172.20.10.3/veterinaria/wsJSONRegistroVeterinario.php?cedula=" + txtCedula.getText().toString() +
+        String url = "http://192.168.1.13/veterinaria/wsJSONRegistroVeterinario.php?cedula=" + txtCedula.getText().toString() +
                 "&apellido=" + txtApellidos.getText().toString() + "&nombre=" + txtNombreVete.getText().toString() +
                 "&edad=" + txtEdad.getText().toString() + "&correo=" + txtCorreoVete.getText().toString() + "&salario=" + txtSalario.getText().toString() + "&veterinaria_fk=" + txtNit_Veterinaria.getText().toString();
 

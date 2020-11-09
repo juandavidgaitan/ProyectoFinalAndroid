@@ -58,7 +58,7 @@ public class RegistrarServicios extends AppCompatActivity implements Response.Li
         btnBuscarVe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarVeteT("http://172.20.10.3/veterinaria/BuscarVeterinaria.php?nit_veterinaria=" + txtNit_Veterinaria.getText() + "");
+                BuscarVeteT("http://192.168.1.13/veterinaria/BuscarVeterinaria.php?nit_veterinaria=" + txtNit_Veterinaria.getText() + "");
             }
         });
     }
@@ -104,7 +104,7 @@ public class RegistrarServicios extends AppCompatActivity implements Response.Li
     }
 
     public void RegistrarServicio(View view) {
-        String url = "http://172.20.10.3/veterinaria/wsJSONRegistroServicio.php?nombre=" + txtNombreServico.getText().toString() +
+        String url = "http://192.168.1.13/veterinaria/wsJSONRegistroServicio.php?nombre=" + txtNombreServico.getText().toString() +
                 "&descripcion=" + txtDescripcion.getText().toString() + "&veterinaria_fk=" + txtNit_Veterinaria.getText().toString();
 
 
@@ -122,7 +122,7 @@ public class RegistrarServicios extends AppCompatActivity implements Response.Li
 
 
     public void BuscarServicios(View view) {
-        String url = "http://172.20.10.3/veterinaria/wsJSONBuscarServico.php?nombre=" + txtNombreServico.getText().toString();
+        String url = "http://192.168.1.13/veterinaria/wsJSONBuscarServico.php?nombre=" + txtNombreServico.getText().toString();
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         request.add(jsonObjectRequest);
 
@@ -166,7 +166,7 @@ public class RegistrarServicios extends AppCompatActivity implements Response.Li
     public void ActualizarServicio (View view){
 
 
-        String url="http://172.20.10.3/veterinaria/wsJSONUpdateServicio.php?";
+        String url="http://192.168.1.13/veterinaria/wsJSONUpdateServicio.php?";
 
 
         stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -214,7 +214,7 @@ public class RegistrarServicios extends AppCompatActivity implements Response.Li
 
     public void EliminarServicio (View view){
 
-        String url = "http://172.20.10.3/veterinaria/wsJSONADeleteServicio.php?nombre="+txtNombreServico.getText().toString();
+        String url = "http://192.168.1.13/veterinaria/wsJSONADeleteServicio.php?nombre="+txtNombreServico.getText().toString();
 
         stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
