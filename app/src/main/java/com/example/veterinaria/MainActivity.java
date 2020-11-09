@@ -15,10 +15,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.veterinaria.Modelo.ClsVeterinaria;
+
+import org.json.JSONArray;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,53 +51,16 @@ public class MainActivity extends AppCompatActivity {
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                LoginVeterinaria ("http://192.168.1.13/veterinaria/LoginVeterinaria.php?usuario=" + txtUsuario.getText() + ""+"&contrasena="+ txtContrasena.getText()+"");
+                LoginCliente ("http://192.168.1.13/veterinaria/LoginCliente.php?usuario=" + txtUsuario.getText() + ""+"&contrasena="+ txtContrasena.getText()+"");
 
-                Ingresa("http://172.20.10.3/veterinaria/wsJSONValidarCliente.php");
-                Ingresa("http://172.20.10.3/veterinaria/wsJSONValidarVeterinaria.php");
 
             }
         });
     }
 
 
-    private void Ingresa(String URL) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                if (!response.isEmpty()) {
-                    Intent intent = new Intent(getApplicationContext(), MenuCliente.class);
-                    startActivity(intent);
-                } else if (!response.isEmpty()) {
-                    Intent intent = new Intent(getApplicationContext(), MenuVeterinaria.class);
-                    startActivity(intent);
-                } /*else
 
-                    Toast.makeText(MainActivity.this, "Usuario o contraseña incorretas ",Toast.LENGTH_SHORT).show();*/
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> parametros = new HashMap<>();
-                parametros.put("usuario", txtUsuario.getText().toString());
-                parametros.put("contrasena", txtContrasena.getText().toString());
-
-                return parametros;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-
-
-        valirdarCliente("http://172.20.10.3/veterinaria/wsJSONValidarCliente.php");
-
-    };
 
 
     private void valirdarCliente(String URL) {
@@ -104,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 if (!response.isEmpty()) {
                     Intent intent = new Intent(getApplicationContext(), MenuCliente.class);
                     startActivity(intent);
-                } else
-                    Toast.makeText(MainActivity.this, "Usuario no encontrado", Toast.LENGTH_SHORT).show();
+                } /*else
+                    Toast.makeText(MainActivity.this, "Usuario no encontrado", Toast.LENGTH_SHORT).show();*/
 
             }
         }, new Response.ErrorListener() {
@@ -125,6 +91,67 @@ public class MainActivity extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+
+
+    }
+
+    private void LoginVeterinaria(String URL) {
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+                for (int i = 0; i < response.length(); i++) {
+
+
+
+                    Intent intent = new Intent(getApplicationContext(), MenuVeterinaria.class);
+                    startActivity(intent);
+
+                }
+
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+               /* Toast.makeText(getApplicationContext(), "Usuario o contrasena incorrectas", Toast.LENGTH_SHORT).show();*/
+            }
+        }
+        );
+        request = Volley.newRequestQueue(this);
+        request.add(jsonArrayRequest);
+
+
+    }
+    private void LoginCliente(String URL) {
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+                for (int i = 0; i < response.length(); i++) {
+
+
+
+                    Intent intent = new Intent(getApplicationContext(), MenuCliente.class);
+                    startActivity(intent);
+
+                }
+
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+               /* Toast.makeText(getApplicationContext(), "Usuario o contrasena incorrectas", Toast.LENGTH_SHORT).show();*/
+            }
+        }
+        );
+        request = Volley.newRequestQueue(this);
+        request.add(jsonArrayRequest);
 
 
     }
