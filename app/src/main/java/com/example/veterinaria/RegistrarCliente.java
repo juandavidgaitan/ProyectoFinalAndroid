@@ -59,21 +59,18 @@ public class RegistrarCliente extends AppCompatActivity implements Response.List
     }
 
     public void RegistrarCliente(View view) {
-        String url = "http://192.168.1.13/veterinaria/wsJSONRegistroCliente.php?cedula=" + txtCedula.getText().toString() +
+        String url = "http://172.20.10.3/veterinaria/wsJSONRegistroCliente.php?cedula=" + txtCedula.getText().toString() +
                 "&nombre=" + txtNombre.getText().toString() + "&apellido=" + txtApellido.getText().toString() +
                 "&correo=" + txtCorreo.getText().toString() + "&telefono=" + txtTelefono.getText().toString() + "&usuario=" + txtUsuario.getText().toString() + "&contrasena=" + txtContrasena.getText().toString();
 
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         request.add(jsonObjectRequest);
 
-
-
-
     }
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getApplicationContext(), "OPERACION ERRONEA" + error.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "OPERACION ERRONEA EN REGISTRAR CLIENTE:" + error.toString(), Toast.LENGTH_SHORT).show();
 
 
     }
@@ -88,7 +85,7 @@ public class RegistrarCliente extends AppCompatActivity implements Response.List
         txtTelefono.setText("");
         txtUsuario.setText("");
         txtContrasena.setText("");
-        Toast.makeText(getApplicationContext(), "OPERACION EXITOSAMENTE", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "OPERACION EXITOSAMENTE:", Toast.LENGTH_SHORT).show();
         limpiar();
 
     }

@@ -12,40 +12,87 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="37dp" />
+
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="141dp"
+            android:layout_height="303dp"
+            app:srcCompat="@drawable/kilalara" />
 
-            app:srcCompat="@drawable/perro" />
-
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="27dp" />
         <EditText
             android:id="@+id/txtUsuario"
-            android:layout_width="match_parent"
+            android:layout_width="264dp"
+            android:layout_marginLeft="64dp"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/user"
             android:ems="10"
             android:hint="Usuario"
             android:inputType="textPersonName" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
         <EditText
             android:id="@+id/txtContrasena"
-            android:layout_width="match_parent"
+            android:layout_width="264dp"
+            android:layout_marginLeft="64dp"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/key"
             android:ems="10"
             android:hint="Contraseña"
             android:inputType="textPassword" />
 
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
         <Button
             android:id="@+id/btnIngresar"
-            android:layout_width="match_parent"
+            android:layout_width="267dp"
             android:layout_height="wrap_content"
-            android:text="Iniciar sesion" />
+            android:layout_marginLeft="64dp"
+            android:background="@drawable/borde_redondo"
+
+
+            android:text="Iniciar Sesion"
+            android:textColor="#000000" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="13dp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="54dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="264dp"
+                    android:layout_marginLeft="64dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/borde_redondo"
+                    android:onClick="RegistarCliente"
+                    android:text="Registrar usuario"
+                    android:textColor="#000000" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,19 +101,14 @@
 
                 <Button
                     android:id="@+id/button3"
-                    android:layout_width="142dp"
+                    android:layout_width="264dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_marginLeft="64dp"
+                    android:background="@drawable/borde_redondo"
                     android:onClick="RegistarVeterinaria"
-                    android:text="Registrar veterinaria" />
+                    android:text="Registrar veterinaria"
+                    android:textColor="#000000" />
 
-                <Button
-                    android:id="@+id/button4"
-                    android:layout_width="138dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="RegistarCliente"
-                    android:text="Registrar usuario" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

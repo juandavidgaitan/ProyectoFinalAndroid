@@ -30,14 +30,7 @@ public class RegistrarVeterinaria extends AppCompatActivity {
     EditText txtContrasena;
     Button btnRegistrar;
 
-
-
     RequestQueue request;
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,25 +45,16 @@ public class RegistrarVeterinaria extends AppCompatActivity {
         txtContrasena = (EditText) findViewById(R.id.txtContrasena);
         btnRegistrar = (Button) findViewById(R.id.btnRegistra);
 
-
-
-
-
-
-
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RegistrarVeterinaria("http://192.168.1.13/veterinaria/RegistrarVeterinaria.php");
+                RegistrarVeterinaria("http://172.20.10.3/veterinaria/RegistrarVeterinaria.php");
             }
         });
 
         request = Volley.newRequestQueue(getBaseContext());
 
-
     }
-
-
 
     public void RegistrarVeterinaria(String URL) {
 
@@ -91,9 +75,6 @@ public class RegistrarVeterinaria extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
 
 
-
-
-
                 Map<String, String> parametros = new HashMap<String, String>();
                 parametros.put("nit_veterinaria",txtNit.getText().toString());
                 parametros.put("nombre",txtNombre.getText().toString());
@@ -108,13 +89,7 @@ public class RegistrarVeterinaria extends AppCompatActivity {
         request.add(stringRequest);
         VolleySingleton.getIntanciaVolley(getBaseContext()).addToRequestQueue(stringRequest);
 
-
     }
-
-
-
-
-
 
     public void limpiar(){
         txtNombre.setText("");
@@ -130,7 +105,5 @@ public class RegistrarVeterinaria extends AppCompatActivity {
         startActivity(intent);
 
     }
-
-
 
 }

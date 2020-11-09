@@ -65,7 +65,7 @@ public class BuscarCliente extends AppCompatActivity implements Response.Listene
         request = Volley.newRequestQueue(getBaseContext());
     }
     public void BuscarClientes(View view) {
-        String url = "http://192.168.1.13/veterinaria/wsJSONBuscarClienteTodo.php?cedula=" + txtCedula.getText().toString();
+        String url = "http://172.20.10.3/veterinaria/wsJSONBuscarClienteTodo.php?cedula=" + txtCedula.getText().toString();
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         request.add(jsonObjectRequest);
 
@@ -99,23 +99,12 @@ public class BuscarCliente extends AppCompatActivity implements Response.Listene
         txtUsuario.setText(cliente.getUsuario());
         txtContrasena.setText(cliente.getContrasena());
 
-
-
-
-
-
     }
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getApplicationContext(), "OPERACION ERRONEA" + error.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "OPERACION ERRONEA 3:" + error.toString(), Toast.LENGTH_SHORT).show();
     }
-
-
-
-
-
-
 
     public void limpiar(){
         txtNombre.setText("");
@@ -128,10 +117,7 @@ public class BuscarCliente extends AppCompatActivity implements Response.Listene
     }
 
     public void ActualizarCliente (View view){
-
-
-        String url="http://192.168.1.13/veterinaria/wsJSONUpdateCliente.php?";
-
+        String url="http://172.20.10.3/veterinaria/wsJSONUpdateCliente.php?";
 
         stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -167,9 +153,6 @@ public class BuscarCliente extends AppCompatActivity implements Response.Listene
                 String usuario=txtUsuario.getText().toString();
                 String contrasena=txtContrasena.getText().toString();
 
-
-
-
                 Map<String,String> parametros=new HashMap<>();
                 parametros.put("cedula",cedula);
                 parametros.put("nombre",nombre);
@@ -178,7 +161,6 @@ public class BuscarCliente extends AppCompatActivity implements Response.Listene
                 parametros.put("telefono",telefono);
                 parametros.put("usuario",usuario);
                 parametros.put("contrasena",contrasena);
-
 
                 return parametros;
             }
@@ -189,7 +171,7 @@ public class BuscarCliente extends AppCompatActivity implements Response.Listene
 
     public void Eliminarcliente (View view){
 
-        String url = "http://192.168.1.13/veterinaria/wsJSONADeleteCliente.php?cedula="+txtCedula.getText().toString();
+        String url = "http://172.20.10.3/veterinaria/wsJSONADeleteCliente.php?cedula="+txtCedula.getText().toString();
 
         stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -204,7 +186,6 @@ public class BuscarCliente extends AppCompatActivity implements Response.Listene
                     txtUsuario.setText("");
                     txtCorreo.setText("");
                     txtTelefono.setText("");
-
 
                     Toast.makeText(getApplicationContext(),"Se ha Eliminado con exito",Toast.LENGTH_SHORT).show();
                 }else{

@@ -29,15 +29,9 @@ public class MainActivity extends AppCompatActivity {
     EditText txtContrasena;
     Button btnIngresar;
 
-
-
-
-  
     JsonObjectRequest jsonObjectRequest;
     ClsVeterinaria clsVeterinaria;
     StringRequest stringRequest;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Ingresa("http://192.168.1.13/veterinaria/wsJSONValidarCliente.php");
-                IngresaVe("http://192.168.1.13/veterinaria/wsJSONValidarVeterinaria.php");
+                Ingresa("http://172.20.10.3/veterinaria/wsJSONValidarCliente.php");
+                IngresaVe("http://172.20.10.3/veterinaria/wsJSONValidarVeterinaria.php");
 
             }
         });
@@ -79,9 +73,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(MainActivity.this, error.toString(),Toast.LENGTH_SHORT).show();
-
-
-
             }
         }){
             @Override
@@ -96,12 +87,6 @@ public class MainActivity extends AppCompatActivity {
 
         RequestQueue requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-
-
-
-
-
-
 
     }
 
@@ -121,9 +106,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(MainActivity.this, error.toString(),Toast.LENGTH_SHORT).show();
-
-
-
             }
         }){
             @Override
@@ -139,16 +121,7 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
-
-
-
-
-
-
     }
-
-
-
 
     public void RegistarVeterinaria(View view) {
 

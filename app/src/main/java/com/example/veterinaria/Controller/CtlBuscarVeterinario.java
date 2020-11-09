@@ -21,12 +21,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
-
-
-
-
-
 public class CtlBuscarVeterinario extends AppCompatActivity implements Response.ErrorListener, Response.Listener<JSONObject> {
 
     EditText txtVeterianria;
@@ -44,13 +38,11 @@ public class CtlBuscarVeterinario extends AppCompatActivity implements Response.
         txtVeterianria = (EditText) findViewById(R.id.txtVeterinaria);
         txtNitVeterinaria = (EditText) findViewById(R.id.txtNitVeterinaria);
 
-
     }
 
 
-
     public void Buscar(final Context context, ClsVeterinaria ve) {
-        String url = "http://192.168.1.13/veterinaria/wsJSONBuscarVeterinaria.php?nit_veterinaria=" + txtNitVeterinaria.getText().toString();
+        String url = "http://172.20.10.3/veterinaria/wsJSONBuscarVeterinaria.php?nit_veterinaria=" + txtNitVeterinaria.getText().toString();
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         request.add(jsonObjectRequest);
 
@@ -80,7 +72,7 @@ public class CtlBuscarVeterinario extends AppCompatActivity implements Response.
     }
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getApplicationContext(), "OPERACION ERRONEA" + error.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "OPERACION ERRONEA 1: " + error.toString(), Toast.LENGTH_SHORT).show();
         txtVeterianria = (EditText) findViewById(R.id.txtVeterinaria);
     }
 }

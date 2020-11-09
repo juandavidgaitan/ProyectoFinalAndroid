@@ -56,7 +56,7 @@ public class RegistrarVeterinario extends AppCompatActivity implements Response.
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarVete("http://192.168.1.13/veterinaria/BuscarVeterinaria.php?nit_veterinaria=" + txtNit_Veterinaria.getText()+"");
+                BuscarVete("http://172.20.10.3/veterinaria/BuscarVeterinaria.php?nit_veterinaria=" + txtNit_Veterinaria.getText()+"");
             }
         });
     }
@@ -66,8 +66,6 @@ public class RegistrarVeterinario extends AppCompatActivity implements Response.
         startActivity(intent);
 
     }
-
-
 
     private void BuscarVete(String URL) {
 
@@ -99,25 +97,20 @@ public class RegistrarVeterinario extends AppCompatActivity implements Response.
         request= Volley.newRequestQueue(this);
         request.add(jsonArrayRequest);
 
-
     }
     public void RegistrarVeterinarios(View view) {
-        String url = "http://192.168.1.13/veterinaria/wsJSONRegistroVeterinario.php?cedula=" + txtCedula.getText().toString() +
+        String url = "http://172.20.10.3/veterinaria/wsJSONRegistroVeterinario.php?cedula=" + txtCedula.getText().toString() +
                 "&apellido=" + txtApellidos.getText().toString() + "&nombre=" + txtNombreVete.getText().toString() +
                 "&edad=" + txtEdad.getText().toString() + "&correo=" + txtCorreoVete.getText().toString() + "&salario=" + txtSalario.getText().toString() + "&veterinaria_fk=" + txtNit_Veterinaria.getText().toString();
 
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         request.add(jsonObjectRequest);
 
-
-
-
     }
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getApplicationContext(), "OPERACION ERRONEA" + error.toString(), Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(getApplicationContext(), "OPERACION ERRONEA EN REGISTRAR VETERINARIO" + error.toString(), Toast.LENGTH_SHORT).show();
 
     }
 
@@ -134,7 +127,6 @@ public class RegistrarVeterinario extends AppCompatActivity implements Response.
         txtSalario.setText("");
 
         Toast.makeText(getApplicationContext(), "OPERACION EXITOSAMENTE", Toast.LENGTH_SHORT).show();
-
 
     }
 

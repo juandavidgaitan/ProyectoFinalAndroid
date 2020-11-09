@@ -41,10 +41,6 @@ public class RegistrarMascota extends AppCompatActivity implements Response.List
     EditText txtId_mascota;
     Button btnRegistrarMascota;
 
-
-
-
-
     RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
 
@@ -69,7 +65,7 @@ CtlGuardarMascota guardarMascota;
         btnRegistrarMascota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RegistrarMascota("http://192.168.1.13/veterinaria/RegistrarMascota.php");
+                RegistrarMascota("http://172.20.10.3/veterinaria/RegistrarMascota.php");
             }
         });
 
@@ -77,7 +73,7 @@ CtlGuardarMascota guardarMascota;
         request = Volley.newRequestQueue(getBaseContext());
     }
     public void BuscarCliente(View view) {
-        String url = "http://192.168.1.13/veterinaria/wsJSONBuscarCliente.php?cedula=" + txtDueno.getText().toString();
+        String url = "http://172.20.10.3/veterinaria/wsJSONBuscarCliente.php?cedula=" + txtDueno.getText().toString();
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         request.add(jsonObjectRequest);
 
@@ -133,21 +129,16 @@ CtlGuardarMascota guardarMascota;
             jsonObject = json.getJSONObject(0);
             cliente.setNombre(jsonObject.optString("nombre"));
 
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         txtNombreDueno.setText(cliente.getNombre());
-
-
-
-
     }
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getApplicationContext(), "OPERACION ERRONEA" + error.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "OPERACION ERRONEA EN REGISTRAR MASCOTA: " + error.toString(), Toast.LENGTH_SHORT).show();
     }
 
 

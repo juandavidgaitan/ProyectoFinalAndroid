@@ -61,7 +61,7 @@ public class CtlGuardarMascota extends AppCompatActivity implements Response.Err
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getApplicationContext(), "OPERACION ERRONEA" + error.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "OPERACION ERRONEA 2 : " + error.toString(), Toast.LENGTH_SHORT).show();
     }
 
 

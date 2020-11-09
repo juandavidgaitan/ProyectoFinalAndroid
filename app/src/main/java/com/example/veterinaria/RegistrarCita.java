@@ -71,14 +71,14 @@ public class RegistrarCita  extends AppCompatActivity implements Response.Listen
         btnBuscarVeterinaria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarVeterinaria("http://192.168.1.13/veterinaria/BuscarVeterinaria.php?nit_veterinaria=" + txtNit_Veterinaria.getText()+"");
+                BuscarVeterinaria("http://172.20.10.3/veterinaria/BuscarVeterinaria.php?nit_veterinaria=" + txtNit_Veterinaria.getText()+"");
             }
         });
 
         btnBuscarMascota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarMascota("http://192.168.1.13/veterinaria/BuscarMascota.php?id_mascota=" + txtMascotaid.getText()+"");
+                BuscarMascota("http://172.20.10.3/veterinaria/BuscarMascota.php?id_mascota=" + txtMascotaid.getText()+"");
             }
         });
     }
@@ -108,7 +108,7 @@ public class RegistrarCita  extends AppCompatActivity implements Response.Listen
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),"ERROR DE CONEXION",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"ERROR DE CONEXION EN REGISTRAR CITA:",Toast.LENGTH_SHORT).show();
             }
         }
         );
@@ -140,7 +140,7 @@ public class RegistrarCita  extends AppCompatActivity implements Response.Listen
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),"ERROR DE CONEXION",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"ERROR DE CONEXION : ",Toast.LENGTH_SHORT).show();
             }
         }
         );
@@ -148,12 +148,6 @@ public class RegistrarCita  extends AppCompatActivity implements Response.Listen
         request.add(jsonArrayRequest);
 
     }
-
-
-
-
-
-
 
         public void Volver(View view) {
 
@@ -163,22 +157,18 @@ public class RegistrarCita  extends AppCompatActivity implements Response.Listen
     }
 
     public void RegistrarCita(View view) {
-        String url = "http://192.168.1.13/veterinaria/wsJSONRegistroCita.php?mascota_fk=" + txtMascotaid.getText().toString() +
+        String url = "http://172.20.10.3/veterinaria/wsJSONRegistroCita.php?mascota_fk=" + txtMascotaid.getText().toString() +
                 "&veterinaria_fk=" + txtNit_Veterinaria.getText().toString() + "&hora=" + txtHora.getText().toString() +
                 "&descripcion=" + txtDescripcion.getText().toString();
 
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         request.add(jsonObjectRequest);
 
-
-
-
     }
 
     @Override
     public void onErrorResponse(VolleyError error) {
         Toast.makeText(getApplicationContext(), "OPERACION ERRONEA" + error.toString(), Toast.LENGTH_SHORT).show();
-
 
     }
 
@@ -194,12 +184,5 @@ public class RegistrarCita  extends AppCompatActivity implements Response.Listen
 
         Toast.makeText(getApplicationContext(), "OPERACION EXITOSAMENTE", Toast.LENGTH_SHORT).show();
 
-
     }
-
-
-
-
-
-
 }
