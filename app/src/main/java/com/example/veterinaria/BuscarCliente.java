@@ -117,7 +117,7 @@ public class BuscarCliente extends AppCompatActivity implements Response.Listene
     }
 
     public void ActualizarCliente (View view){
-        String url="http://172.20.10.3/veterinaria/wsJSONUpdateCliente.php?";
+        String url="http://192.168.1.13/veterinaria/wsJSONUpdateCliente.php?";
 
         stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -171,7 +171,7 @@ public class BuscarCliente extends AppCompatActivity implements Response.Listene
 
     public void Eliminarcliente (View view){
 
-        String url = "http://172.20.10.3/veterinaria/wsJSONADeleteCliente.php?cedula="+txtCedula.getText().toString();
+        String url = "http://192.168.1.13/veterinaria/wsJSONADeleteCliente.php?cedula="+txtCedula.getText().toString();
 
         stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
