@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0C0C0C"
     tools:context=".BuscarCliente">
 
     <LinearLayout
@@ -17,83 +18,188 @@
             android:layout_height="33dp"
             android:gravity="center"
             android:text="Registrar cliente"
-            android:textSize="25dp" />
+            android:textColor="#FFFFFF"
+            android:textSize="25dp"
+            android:layout_marginTop="3dp"/>
 
         <EditText
             android:id="@+id/txtCedula"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:ems="10"
             android:hint="Cedula"
-            android:inputType="number" />
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
+
+            android:inputType="number"
+            android:padding="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtNombres"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
             android:ems="10"
             android:hint="Nombres"
-            android:inputType="textPersonName" />
+            android:layout_marginTop="3dp"
+
+            android:inputType="textPersonName"
+            android:padding="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtApellidos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
             android:ems="10"
             android:hint="Apellidos"
-            android:inputType="textPersonName" />
+            android:layout_marginTop="3dp"
+
+            android:inputType="textPersonName"
+            android:padding="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtCorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:layout_marginTop="3dp"
+            android:drawablePadding="16dp"
             android:ems="10"
             android:hint="Correo"
-            android:inputType="textPersonName" />
+
+            android:inputType="textPersonName"
+            android:padding="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
+            android:layout_marginTop="3dp"
             android:ems="10"
             android:hint="Telefono"
-            android:inputType="textPersonName" />
+
+            android:inputType="textPersonName"
+            android:padding="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
+            android:layout_marginTop="3dp"
             android:ems="10"
             android:hint="Usuario"
-            android:inputType="textPersonName" />
+
+            android:inputType="textPersonName"
+            android:padding="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
+            android:layout_marginTop="3dp"
             android:ems="10"
             android:hint="Contrasena"
-            android:inputType="textPersonName" />
+
+            android:inputType="textPersonName"
+            android:padding="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="32dp"
+
+            android:background="@drawable/round_bg1"
             android:onClick="BuscarClientes"
-            android:text="Buscar" />
+            android:text="Buscar"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_bg1"
             android:onClick="ActualizarCliente"
-            android:text="Modificar" />
+            android:text="Modificar"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_bg1"
             android:onClick="Eliminarcliente"
-            android:text="Eliminar" />
+            android:text="Eliminar"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

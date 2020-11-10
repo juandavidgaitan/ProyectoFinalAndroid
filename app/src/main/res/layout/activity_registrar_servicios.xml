@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0B0A0A"
     tools:context=".RegistrarServicios">
 
     <LinearLayout
@@ -17,81 +18,159 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Registrar servicios"
+            android:textColor="#FFFFFF"
             android:textSize="25dp" />
 
         <EditText
             android:id="@+id/txtNit_veterinaria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
             android:ems="10"
             android:hint="Nit veterinaria"
-            android:inputType="number" />
+            android:inputType="number"
+            android:padding="16dp"
+
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtNombreVeterinaria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
             android:ems="10"
-            android:hint="Nombre veterinaria"
             android:enabled="false"
-            android:inputType="textPersonName" />
+            android:hint="Nombre veterinaria"
+            android:inputType="textPersonName"
+            android:padding="16dp"
+
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/btnBuscarve"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Buscar veterinaria" />
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_bg1"
+            android:text="Buscar veterinaria"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtNombreServico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
             android:ems="10"
             android:hint="Nombre servico"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:padding="16dp"
+
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtDescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
             android:ems="10"
             android:hint="Descripcion servico"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:padding="16dp"
+
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_bg1"
             android:onClick="RegistrarServicio"
-            android:text="Registrar servicio" />
+            android:text="Registrar servicio"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button21"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_bg1"
             android:onClick="BuscarServicios"
-            android:text="buscar servico" />
+            android:text="buscar servico"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button23"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_bg1"
             android:onClick="ActualizarServicio"
-            android:text="modificar servico" />
+            android:text="modificar servico"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button22"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_bg1"
             android:onClick="EliminarServicio"
-            android:text="eliminar servico" />
-
-        <Button
-            android:id="@+id/button37"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="Volver"
-            android:text="Volver" />
+            android:text="eliminar servico"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#090808"
     tools:context=".RegistrarCita">
 
     <LinearLayout
@@ -15,103 +16,226 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Agendar cita"
             android:gravity="center"
+            android:text="Agendar cita"
+            android:textColor="#FFFFFF"
             android:textSize="25dp" />
 
         <EditText
             android:id="@+id/txtNit_veterinaria"
-            android:layout_width="match_parent"
+            android:layout_width="338dp"
             android:layout_height="wrap_content"
+
             android:ems="10"
             android:hint="id mascota"
-            android:inputType="number" />
+
+            android:inputType="number"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
+            android:padding="14dp"
+
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtNombreMascota"
-            android:layout_width="match_parent"
+            android:layout_width="338dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
             android:ems="10"
-            android:hint="Nombre mascota"
             android:enabled="false"
-            android:inputType="textWebEditText" />
+            android:hint="Nombre mascota"
+            android:inputType="textWebEditText"
+
+
+            android:padding="14dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/BuscarMascota"
-            android:layout_width="match_parent"
+            android:layout_width="338dp"
             android:layout_height="wrap_content"
-            android:text="Buscar mascota" />
+
+            android:text="Buscar mascota"
+
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_bg1"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:padding="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtNitVeterinaria"
-            android:layout_width="match_parent"
+            android:layout_width="338dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
             android:ems="10"
             android:hint="Nit veterinaria"
-            android:inputType="number" />
+            android:inputType="number"
+
+
+            android:padding="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtVeterinaria"
-            android:layout_width="match_parent"
+            android:layout_width="338dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
             android:ems="10"
-            android:hint="Veterinaria"
             android:enabled="false"
-            android:inputType="textPersonName" />
+            android:hint="Veterinaria"
+            android:inputType="textPersonName"
+
+
+            android:padding="14dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/btnBuscarVeterinaria"
-            android:layout_width="match_parent"
+            android:layout_width="338dp"
             android:layout_height="wrap_content"
-            android:text="Buscar veterinaria" />
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_bg1"
+            android:text="Buscar veterinaria"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:padding="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtHora"
-            android:layout_width="match_parent"
+            android:layout_width="338dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
             android:ems="10"
             android:hint="Hora"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+
+
+            android:padding="14dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/txtDescripcion"
-            android:layout_width="match_parent"
+            android:layout_width="338dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
             android:ems="10"
             android:hint="Descripcion"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+
+
+            android:padding="14dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button15"
-            android:layout_width="match_parent"
+            android:layout_width="338dp"
             android:layout_height="wrap_content"
+
             android:onClick="RegistrarCita"
-            android:text="Registrar cita" />
+            android:text="Registrar cita"
+            android:padding="14dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_bg1"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button16"
-            android:layout_width="match_parent"
+            android:layout_width="338dp"
             android:layout_height="wrap_content"
-            android:text="Buscar cita" />
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_bg1"
+            android:text="Buscar cita"
+            android:textSize="15sp"
+            android:padding="14dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button18"
-            android:layout_width="match_parent"
+            android:layout_width="338dp"
             android:layout_height="wrap_content"
-            android:text="Modificar cita" />
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_bg1"
+            android:text="Modificar cita"
+            android:textSize="15sp"
+            android:padding="14dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button17"
-            android:layout_width="match_parent"
+            android:layout_width="338dp"
             android:layout_height="wrap_content"
-            android:text="Eliminar cita" />
-
-        <Button
-            android:id="@+id/button36"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="Volver"
-            android:text="Volver" />
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_bg1"
+            android:text="Eliminar cita"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

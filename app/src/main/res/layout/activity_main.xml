@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#131313"
     tools:context=".MainActivity">
 
     <View
@@ -34,7 +35,7 @@
         android:contentDescription="TOP ICON"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hola" />
+        app:srcCompat="@drawable/ima" />
 
     <TextView
         android:id="@+id/topText"
@@ -43,7 +44,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="76dp"
-        android:text="Ayuda animal"
+        android:text="Asistencia veterinaria"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -58,18 +59,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:autofillHints="Provide your email"
         android:background="@drawable/round_border"
         android:drawableStart="@drawable/ic_email"
+        android:drawableLeft="@drawable/ic_email"
         android:drawablePadding="16dp"
         android:ems="10"
         android:hint="email"
         android:inputType="textEmailAddress"
         android:padding="16dp"
+        android:textColor="#F3F0F0"
+        android:textColorHint="#F3EEEE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view5"
-        android:autofillHints="Provide your email"
-        android:drawableLeft="@drawable/ic_email" />
+        app:layout_constraintTop_toBottomOf="@+id/view5" />
 
     <EditText
         android:id="@+id/txtContrasena"
@@ -80,15 +83,17 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/round_border"
         android:drawableStart="@drawable/ic_lock"
+        android:drawableLeft="@drawable/ic_lock"
         android:drawablePadding="16dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="16dp"
+        android:textColor="#F1EBEB"
+        android:textColorHint="#F6F0F0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUsuario"
-        android:drawableLeft="@drawable/ic_lock" />
+        app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
 
     <Button
         android:id="@+id/btnRegistrarUsuario"
@@ -191,12 +196,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:srcCompat="@drawable/facebook" />
+
         <ImageView
             android:id="@+id/facebookLog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:srcCompat="@drawable/twitter" />
+
         <ImageView
             android:id="@+id/facebookLogi"
             android:layout_width="wrap_content"

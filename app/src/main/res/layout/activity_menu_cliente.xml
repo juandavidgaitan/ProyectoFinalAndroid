@@ -9,23 +9,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#151414"
         android:orientation="vertical">
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="280dp" />
+            android:layout_height="34dp" />
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Menu Usuario"
             android:gravity="center"
-            android:textSize="25dp" />
+            android:text="Menu Usuario"
+            android:textColor="#FFFFFF"
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="22dp" />
+            android:layout_height="214dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,19 +39,21 @@
                 android:id="@+id/button35"
                 android:layout_width="174dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
                 android:layout_marginStart="14dp"
+                android:layout_marginLeft="24dp"
                 android:background="@drawable/borde_redondo"
+                android:drawableLeft="@drawable/portapapeles"
                 android:text="Lista de veterinarias" />
 
             <Button
                 android:id="@+id/button34"
                 android:layout_width="174dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
                 android:layout_marginStart="14dp"
+                android:layout_marginLeft="24dp"
 
                 android:background="@drawable/borde_redondo"
+                android:drawableLeft="@drawable/dato"
                 android:onClick="RegistarMascota"
                 android:text="Gestionar Mascota" />
 
@@ -63,10 +68,11 @@
                 android:id="@+id/button33"
                 android:layout_width="174dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
                 android:layout_marginStart="14dp"
+                android:layout_marginLeft="24dp"
 
                 android:background="@drawable/borde_redondo"
+                android:drawableLeft="@drawable/almacenamiento"
                 android:onClick="GestionarCita"
                 android:text="Gestionar cita" />
 
@@ -74,11 +80,12 @@
                 android:id="@+id/button2"
                 android:layout_width="174dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="-8dp"
-                android:layout_marginStart="14dp"
 
                 android:background="@drawable/borde_redondo"
+                android:drawableLeft="@drawable/actualizar"
                 android:onClick="Actualizardatos"
                 android:text="Actualizar datos usuario" />
 

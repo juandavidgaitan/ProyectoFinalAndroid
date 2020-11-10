@@ -19,6 +19,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.veterinaria.Controller.CtlGuardarMascota;
 import com.example.veterinaria.Modelo.ClsCliente;
 import com.example.veterinaria.Modelo.ClsServico;
 import com.example.veterinaria.Modelo.VolleySingleton;
@@ -43,6 +44,7 @@ public class RegistrarServicios extends AppCompatActivity implements Response.Li
     RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
     StringRequest stringRequest;
+    CtlGuardarMascota ctl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,11 +110,11 @@ public class RegistrarServicios extends AppCompatActivity implements Response.Li
                 "&descripcion=" + txtDescripcion.getText().toString() + "&veterinaria_fk=" + txtNit_Veterinaria.getText().toString();
 
 
-        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this.ctl, this.ctl);
         request.add(jsonObjectRequest);
 
+limpiar();
 
-        limpiar();
 
         Toast.makeText(getApplicationContext(), "OPERACION EXITOSAMENTE", Toast.LENGTH_SHORT).show();
 
