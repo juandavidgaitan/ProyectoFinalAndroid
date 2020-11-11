@@ -32,7 +32,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegistrarVeterinario extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener  {
+public class RegistrarVeterinario extends AppCompatActivity   {
 
     /*veterinaria*/
     EditText txtNit_Veterinaria;
@@ -46,7 +46,8 @@ public class RegistrarVeterinario extends AppCompatActivity implements Response.
     EditText txtSalario;
     Button btnBuscar;
     CtlGuardarMascota ctl;
-
+    Button btnRegistarVeterinario;
+    Button btnBuscarVeterinario;
     RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
     StringRequest stringRequest;
@@ -64,11 +65,27 @@ public class RegistrarVeterinario extends AppCompatActivity implements Response.
         txtCorreoVete = (EditText) findViewById(R.id.txtCorreovete);
         txtSalario = (EditText) findViewById(R.id.txtSalario);
         btnBuscar=(Button) findViewById(R.id.btnBuscar);
+        btnBuscarVeterinario=(Button) findViewById(R.id.btnBuscarVeterinario);
+        btnRegistarVeterinario=(Button) findViewById(R.id.btnRegstrarVeterinario);
+
+
+        btnRegistarVeterinario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RegistrarVeterinario("http://192.168.1.13/veterinaria/RegistrarVeterinario.php");
+            }
+        });
 
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 BuscarVete("http://192.168.1.13/veterinaria/BuscarVeterinaria.php?nit_veterinaria=" + txtNit_Veterinaria.getText()+"");
+            }
+        });
+        btnBuscarVeterinario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BuscarVeterinario("http://192.168.1.13/veterinaria/BuscarVeterinario.php?cedula=" + txtCedula.getText()+"");
             }
         });
     }
@@ -112,20 +129,102 @@ public class RegistrarVeterinario extends AppCompatActivity implements Response.
     }
 
 
-    public void RegistrarVeterinarios(View view) {
-        String url = "http://192.168.1.13/veterinaria/wsJSONRegistroVeterinario.php?cedula=" + txtCedula.getText().toString() +
-                "&apellido=" + txtApellidos.getText().toString() + "&nombre=" + txtNombreVete.getText().toString() +
-                "&edad=" + txtEdad.getText().toString() + "&correo=" + txtCorreoVete.getText().toString() + "&salario=" + txtSalario.getText().toString() + "&veterinaria_fk=" + txtNit_Veterinaria.getText().toString();
 
-        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this.ctl, this.ctl);
-        request.add(jsonObjectRequest);
 
-        limpiar();
-        Toast.makeText(getApplicationContext(), "OPERACION EXITOSAMENTE", Toast.LENGTH_SHORT).show();
 
+
+
+    public void limpiar(){
+        txtNombreVete.setText("");
+        txtCedula.setText("");
+        txtApellidos.setText("");
+        txtEdad.setText("");
+        txtCorreoVete.setText("");
+        txtSalario.setText("");
+        txtNit_Veterinaria.setText("");
     }
 
 
+
+
+
+    public void RegistrarVeterinario(String URL) {
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(), "OPERACION EXITOSA", Toast.LENGTH_SHORT).show();
+                limpiar();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+
+
+
+
+                Map<String, String> parametros = new HashMap<String, String>();
+                parametros.put("cedula",txtCedula.getText().toString());
+                parametros.put("nombre",txtNombreVete.getText().toString());
+                parametros.put("apellido",txtApellidos.getText().toString());
+                parametros.put("edad",txtEdad.getText().toString());
+                parametros.put("correo",txtCorreoVete.getText().toString());
+                parametros.put("salario",txtSalario.getText().toString());
+                parametros.put("veterinaria_fk",txtNit_Veterinaria.getText().toString());
+                return  parametros;
+
+            }
+        };
+        request.add(stringRequest);
+        VolleySingleton.getIntanciaVolley(getBaseContext()).addToRequestQueue(stringRequest);
+
+
+    }
+
+    private void BuscarVeterinario(String URL){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObject = null;
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        txtNombreVete.setText(jsonObject.getString("nombre"));
+                        txtApellidos.setText(jsonObject.getString("apellido"));
+                        txtEdad.setText(jsonObject.getString("edad"));
+                        txtCorreoVete.setText(jsonObject.getString("correo"));
+                        txtSalario.setText(jsonObject.getString("salario"));
+                        txtNit_Veterinaria.setText(jsonObject.getString("veterinaria_fk"));
+
+
+
+                    } catch (JSONException e) {
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                    }
+                }
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),"ERROR DE CONEXION : ",Toast.LENGTH_SHORT).show();
+            }
+        }
+        );
+        request=Volley.newRequestQueue(this);
+        request.add(jsonArrayRequest);
+
+    }
 
     public void ActualizarVeterinario (View view){
         String url="http://192.168.1.13/veterinaria/wsJSONUpdateVeterinario.php?";
@@ -182,7 +281,7 @@ public class RegistrarVeterinario extends AppCompatActivity implements Response.
 
     public void EliminarVete (View view){
 
-        String url = "http://192.168.1.13/veterinaria/wsJSONADeleteCliente.php?cedula="+txtCedula.getText().toString();
+        String url = "http://192.168.1.13/veterinaria/wsJSONADeleteVeterinario.php?cedula="+txtCedula.getText().toString();
 
         stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -222,97 +321,6 @@ public class RegistrarVeterinario extends AppCompatActivity implements Response.
         request.add(stringRequest);
         VolleySingleton.getIntanciaVolley(getApplicationContext()).addToRequestQueue(stringRequest);
     }
-    public void limpiar(){
-        txtNombreVete.setText("");
-        txtCedula.setText("");
-        txtApellidos.setText("");
-        txtEdad.setText("");
-        txtCorreoVete.setText("");
-        txtSalario.setText("");
-        txtNit_Veterinaria.setText("");
-    }
-
-    public void BuscarVeterinario(View view) {
-        String url = "http://192.168.1.13/veterinaria/wsJSONBuscarVeterinarioTodo.php?cedula=" + txtCedula.getText().toString();
-        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
-        request.add(jsonObjectRequest);
-
-
-    }
-
-    @Override
-    public void onErrorResponse(VolleyError error) {
-
-
-        Toast.makeText(getApplicationContext(), "OPERACION ERRONEA 3:" + error.toString(), Toast.LENGTH_SHORT).show();
-
-    }
-
-    @Override
-    public void onResponse(JSONObject response) {
-        Toast.makeText(getBaseContext(), "Mensaje" + response, Toast.LENGTH_SHORT).show();
-        ClsVeterinario veterinario = new ClsVeterinario();
-        JSONArray json = response.optJSONArray("veterinario");
-        JSONObject jsonObject = null;
-
-        try {
-            jsonObject = json.getJSONObject(0);
-
-            veterinario.setNombre(jsonObject.optString("nombre"));
-            veterinario.setApellido(jsonObject.optString("apellido"));
-            veterinario.setEdad(jsonObject.optString("edad"));
-            veterinario.setCorreo(jsonObject.optString("correo"));
-            veterinario.setSalario(jsonObject.optString("salario"));
-            veterinario.setVeterinaria_fk(jsonObject.optString("veterinaria_fk"));
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        txtNombreVete.setText(veterinario.getNombre());
-        txtApellidos.setText(veterinario.getApellido());
-        txtEdad.setText(veterinario.getEdad());
-        txtCorreoVete.setText(veterinario.getCorreo());
-        txtSalario.setText(veterinario.getSalario());
-        txtNit_Veterinaria.setText(veterinario.getVeterinaria_fk());
-
-    }
-   /* public void onResponse( JSONObject response) {
-        Toast.makeText(getBaseContext(), "Mensaje" + response, Toast.LENGTH_SHORT).show();
-        ClsVeterinario veterinario = new ClsVeterinario();
-        JSONArray json = response.optJSONArray("veterinario");
-        JSONObject jsonObject = null;
-
-        try {
-            jsonObject = json.getJSONObject(0);
-
-            veterinario.setNombre(jsonObject.optString("nombre"));
-            veterinario.setApellido(jsonObject.optString("apellido"));
-            veterinario.setEdad(jsonObject.optString("edad"));
-            veterinario.setCorreo(jsonObject.optString("correo"));
-            veterinario.setSalario(jsonObject.optString("salario"));
-            veterinario.setVeterinaria_fk(jsonObject.optString("veterinaria_fk"));
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        txtNombreVete.setText(veterinario.getNombre());
-        txtApellidos.setText(veterinario.getApellido());
-        txtEdad.setText(veterinario.getEdad());
-        txtCorreoVete.setText(veterinario.getCorreo());
-        txtSalario.setText(veterinario.getSalario());
-        txtNit_Veterinaria.setText(veterinario.getVeterinaria_fk());
-
-    }
-
-    @Override
-    public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getApplicationContext(), "OPERACION ERRONEA 3:" + error.toString(), Toast.LENGTH_SHORT).show();
-    }*/
-
 
 
 

@@ -191,30 +191,29 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button25"
-            android:layout_width="338dp"
+            android:id="@+id/btnRegstrarVeterinario"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_marginStart="32dp"
             android:layout_marginTop="0.5dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_bg1"
-            android:onClick="RegistrarVeterinarios"
             android:padding="10dp"
-            android:text="Registrar veterinario"
+            android:text="Buscar veterinario"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <Button
-            android:id="@+id/button26"
+            android:id="@+id/btnBuscarVeterinario"
             android:layout_width="338dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="0.5dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_bg1"
-            android:onClick="BuscarVeterinario"
             android:padding="10dp"
             android:text="Buscar veterinario"
             android:textSize="15sp"

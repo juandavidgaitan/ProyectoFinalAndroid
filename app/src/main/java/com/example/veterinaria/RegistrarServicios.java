@@ -31,7 +31,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegistrarServicios extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener {
+public class RegistrarServicios extends AppCompatActivity{
 
     /*veterinaria*/
     EditText txtNit_Veterinaria;
@@ -39,7 +39,12 @@ public class RegistrarServicios extends AppCompatActivity implements Response.Li
     /*servicos*/
     EditText txtNombreServico;
     EditText txtDescripcion;
+    EditText txtId_servicio;
     Button btnBuscarVe;
+
+    Button btnBuscarServicio;
+    Button btnRegistrarServicio;
+
 
     RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
@@ -54,7 +59,25 @@ public class RegistrarServicios extends AppCompatActivity implements Response.Li
         txtVeterinaria = (EditText) findViewById(R.id.txtNombreVeterinaria);
         txtNombreServico = (EditText) findViewById(R.id.txtNombreServico);
         txtDescripcion = (EditText) findViewById(R.id.txtDescripcion);
+        txtId_servicio = (EditText) findViewById(R.id.txtId_servicio);
         btnBuscarVe = (Button) findViewById(R.id.btnBuscarve);
+        btnBuscarServicio = (Button) findViewById(R.id.btnBuscarServicio);
+        btnRegistrarServicio = (Button) findViewById(R.id.btnRegistrarServicio);
+
+
+        btnRegistrarServicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RegistrarServicio("http://192.168.1.13/veterinaria/RegistrarServicio.php");
+            }
+        });
+
+        btnBuscarServicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BuscarServicio("http://192.168.1.13/veterinaria/BuscarServicio.php?id_servicio=" + txtId_servicio.getText()+"");
+            }
+        });
 
 
         btnBuscarVe.setOnClickListener(new View.OnClickListener() {
@@ -105,61 +128,82 @@ public class RegistrarServicios extends AppCompatActivity implements Response.Li
 
     }
 
-    public void RegistrarServicio(View view) {
-        String url = "http://192.168.1.13/veterinaria/wsJSONRegistroServicio.php?nombre=" + txtNombreServico.getText().toString() +
-                "&descripcion=" + txtDescripcion.getText().toString() + "&veterinaria_fk=" + txtNit_Veterinaria.getText().toString();
+    public void RegistrarServicio(String URL) {
 
 
-        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this.ctl, this.ctl);
-        request.add(jsonObjectRequest);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(), "OPERACION EXITOSA", Toast.LENGTH_SHORT).show();
+                limpiar();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
 
-limpiar();
 
 
-        Toast.makeText(getApplicationContext(), "OPERACION EXITOSAMENTE", Toast.LENGTH_SHORT).show();
+
+
+                Map<String, String> parametros = new HashMap<String, String>();
+                parametros.put("id_servicio",txtId_servicio.getText().toString());
+                parametros.put("nombre",txtNombreServico.getText().toString());
+                parametros.put("descripcion",txtDescripcion.getText().toString());
+                parametros.put("veterinaria_fk",txtNit_Veterinaria.getText().toString());
+
+                return  parametros;
+
+            }
+        };
+        request.add(stringRequest);
+        VolleySingleton.getIntanciaVolley(getBaseContext()).addToRequestQueue(stringRequest);
 
 
     }
 
+    private void BuscarServicio(String URL){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObject = null;
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        txtNombreServico.setText(jsonObject.getString("nombre"));
+                        txtDescripcion.setText(jsonObject.getString("descripcion"));
+                        txtNit_Veterinaria.setText(jsonObject.getString("veterinaria_fk"));
 
 
-    public void BuscarServicios(View view) {
-        String url = "http://192.168.1.13/veterinaria/wsJSONBuscarServico.php?nombre=" + txtNombreServico.getText().toString();
-        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
-        request.add(jsonObjectRequest);
 
 
-    }
-
-    public void onResponse( JSONObject response) {
-        Toast.makeText(getBaseContext(), "Mensaje" + response, Toast.LENGTH_SHORT).show();
-        ClsServico servico = new ClsServico();
-        JSONArray json = response.optJSONArray("servico");
-        JSONObject jsonObject = null;
-
-        try {
-            jsonObject = json.getJSONObject(0);
-
-            servico.setDescripcion(jsonObject.optString("descripcion"));
-            servico.setVeterinaria_fk(jsonObject.optString("veterinaria_fk"));
+                    } catch (JSONException e) {
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
 
 
-        } catch (JSONException e) {
-            e.printStackTrace();
+                    }
+                }
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),"ERROR DE CONEXION : ",Toast.LENGTH_SHORT).show();
+            }
         }
-
-        txtDescripcion.setText(servico.getDescripcion());
-        txtNit_Veterinaria.setText(servico.getVeterinaria_fk());
+        );
+        request=Volley.newRequestQueue(this);
+        request.add(jsonArrayRequest);
 
     }
-
-    @Override
-    public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getApplicationContext(), "OPERACION ERRONEA EN REGISTRAR SERVICIOS" + error.toString(), Toast.LENGTH_SHORT).show();
-    }
-
     public void limpiar() {
         txtVeterinaria.setText("");
+        txtId_servicio.setText("");
         txtNit_Veterinaria.setText("");
         txtDescripcion.setText("");
         txtNombreServico.setText("");
@@ -197,11 +241,14 @@ limpiar();
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
+
+                String id_servicio=txtId_servicio.getText().toString();
                 String veterinaria_fk=txtNit_Veterinaria.getText().toString();
                 String nombre=txtNombreServico.getText().toString();
                 String descripcion=txtDescripcion.getText().toString();
 
                 Map<String,String> parametros=new HashMap<>();
+                parametros.put("id_servicio",id_servicio);
                 parametros.put("veterinaria_fk",veterinaria_fk);
                 parametros.put("nombre",nombre);
                 parametros.put("descripcion",descripcion);
@@ -216,7 +263,7 @@ limpiar();
 
     public void EliminarServicio (View view){
 
-        String url = "http://192.168.1.13/veterinaria/wsJSONADeleteServicio.php?nombre="+txtNombreServico.getText().toString();
+        String url = "http://192.168.1.13/veterinaria/wsJSONADeleteServicio.php?id_servicio="+txtId_servicio.getText().toString();
 
         stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -225,6 +272,7 @@ limpiar();
 
                 if (response.trim().equalsIgnoreCase("elimina")){
                     txtNombreServico.setText("");
+                    txtId_servicio.setText("");
                     txtDescripcion.setText("");
                     txtNit_Veterinaria.setText("");
 

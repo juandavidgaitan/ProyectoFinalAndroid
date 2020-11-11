@@ -35,7 +35,7 @@
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
-            android:padding="14dp"
+            android:padding="10dp"
 
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
@@ -57,7 +57,7 @@
             android:inputType="textWebEditText"
 
 
-            android:padding="14dp"
+            android:padding="10dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
@@ -94,7 +94,7 @@
             android:inputType="number"
 
 
-            android:padding="16dp"
+            android:padding="10dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
@@ -115,7 +115,7 @@
             android:inputType="textPersonName"
 
 
-            android:padding="14dp"
+            android:padding="10dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
@@ -137,6 +137,25 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
+            android:id="@+id/txtId_cita"
+            android:layout_width="333dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_border1"
+            android:drawablePadding="16dp"
+            android:ems="10"
+            android:hint="Id cita"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
             android:id="@+id/txtHora"
             android:layout_width="338dp"
             android:layout_height="wrap_content"
@@ -150,7 +169,7 @@
             android:inputType="textPersonName"
 
 
-            android:padding="14dp"
+            android:padding="10dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
@@ -164,7 +183,7 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
-            android:drawablePadding="16dp"
+            android:drawablePadding="10dp"
             android:ems="10"
             android:hint="Descripcion"
             android:inputType="textPersonName"
@@ -177,24 +196,23 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button15"
+            android:id="@+id/btnRegistrarCita"
             android:layout_width="338dp"
             android:layout_height="wrap_content"
 
-            android:onClick="RegistrarCita"
-            android:text="Registrar cita"
-            android:padding="14dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="0.5dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_bg1"
+            android:padding="14dp"
+            android:text="Registrar cita"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button16"
+            android:id="@+id/btnBuscarCita"
             android:layout_width="338dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -216,9 +234,10 @@
             android:layout_marginTop="0.5dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_bg1"
+            android:onClick="ActualizarCita"
+            android:padding="14dp"
             android:text="Modificar cita"
             android:textSize="15sp"
-            android:padding="14dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -231,6 +250,7 @@
             android:layout_marginTop="0.5dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_bg1"
+            android:onClick="EliminarCita"
             android:text="Eliminar cita"
             android:textSize="15sp"
             android:textStyle="bold"
