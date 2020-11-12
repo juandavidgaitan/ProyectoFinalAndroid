@@ -65,7 +65,7 @@ public class BuscarCliente extends AppCompatActivity implements Response.Listene
         request = Volley.newRequestQueue(getBaseContext());
     }
     public void BuscarClientes(View view) {
-        String url = "http://192.168.1.13/veterinaria/wsJSONBuscarClienteTodo.php?cedula=" + txtCedula.getText().toString();
+        String url = "http://192.168.0.5/veterinaria/wsJSONBuscarClienteTodo.php?cedula=" + txtCedula.getText().toString();
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         request.add(jsonObjectRequest);
 
@@ -117,7 +117,7 @@ public class BuscarCliente extends AppCompatActivity implements Response.Listene
     }
 
     public void ActualizarCliente (View view){
-        String url="http://192.168.1.13/veterinaria/wsJSONUpdateCliente.php?";
+        String url="http://192.168.0.5/veterinaria/wsJSONUpdateCliente.php?";
 
         stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -171,7 +171,7 @@ public class BuscarCliente extends AppCompatActivity implements Response.Listene
 
     public void Eliminarcliente (View view){
 
-        String url = "http://192.168.1.13/veterinaria/wsJSONADeleteCliente.php?cedula="+txtCedula.getText().toString();
+        String url = "http://192.168.0.5/veterinaria/wsJSONADeleteCliente.php?cedula="+txtCedula.getText().toString();
 
         stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override

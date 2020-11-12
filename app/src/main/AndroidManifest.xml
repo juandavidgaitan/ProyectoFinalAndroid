@@ -7,6 +7,11 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the "MyLocation" functionality.
     -->
+
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true"/>
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -33,11 +38,20 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBPPsIbCN6jjeNal01mIiq46wi-EqIRcoc" />
+            android:value="AIzaSyDiL-XbbAP06HcAr4AFRjpFW-tiHDRL0Xk" />
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="Maps">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ListaMarcadoresActivity">
+        </activity>
+        <activity android:name=".LugarActivity" />
+        <activity android:name=".MarcadorActivity">
+        </activity>
         <activity android:name=".BuscarCliente" />
         <activity android:name=".MenuVeterinaria" />
         <activity android:name=".MenuCliente" />
@@ -47,13 +61,26 @@
         <activity android:name=".RegistrarMascota" />
         <activity android:name=".RegistrarCliente" />
         <activity android:name=".RegistrarVeterinaria" />
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".MainActivity"
+            android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
     </application>
 
 </manifest>

@@ -6,50 +6,60 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+
 public class Conexion extends SQLiteOpenHelper {
 
-    private static final String database = "ubicacion.db";
+    private static final String database = "veterinaria.db";
+    /*Para manipular el registro que retorna la DB*/
     private static final SQLiteDatabase.CursorFactory factory = null;
-    private static final int version = 2;
+    private static final int version = 1;
+    /*Instancia de la base de datos*/
     SQLiteDatabase bd;
 
-    public Conexion(Context context, String name,
-                    SQLiteDatabase.CursorFactory factory,
-                    int version) {
+    /*Constructor si uno quiere especificar otra DB*/
+    public Conexion(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
+
+    /*Para usar la base de datos establecida*/
     public Conexion(Context context) {
-        super(context, database, factory, version);
+        super(context, database,factory, version);
     }
 
     @Override
     public void onOpen(SQLiteDatabase db) {
         super.onOpen(db);
         if (!db.isReadOnly()) {
-            db.execSQL("PRAGMA foreign_keys = ON;");
+            // Enable foreign key constraints
+            db.execSQL("PRAGMA foreign_keys=ON;");
+            //db.setForeignKeyConstraintsEnabled(true);
         }
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-
-        // el idUsuario en la tabla ubicacion estaba como tipo text, lo pasé a number pensando que
-        // tal vez más adelante podría mostrar un error.
-        db.execSQL("create table ubicacion(" +
-                "id number primary key," +
-                "nombre text," +
+        db.execSQL("create table user(user text primary key, " +
+                "cedula text," +
+                "nombres text," +
+                "apellidos text," +
+                "correo text," +
+                "telefono text," +
+                "usuario text, " +
+                "password text)");
+        db.execSQL("create table marcador(nombre text, " +
                 "descripcion text," +
-                "color text," +
-                "latitud text," +
-                "longitud text," +
-                "idUsuario number references usuario on delete cascade)");
+                "color text, " +
+                "latitud numeric," +
+                "longitud numeric," +
+                "usuario text," +
+                "FOREIGN KEY(usuario) REFERENCES user(usuario) ON DELETE CASCADE)");
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table if exists ubicacion");
+    public void onUpgrade(SQLiteDatabase db, int versionAnte,int versionNue) {
+        db.execSQL("drop table if exists user");
+        db.execSQL("drop table if exists marcador");
         onCreate(db);
     }
 
@@ -59,10 +69,12 @@ public class Conexion extends SQLiteOpenHelper {
 
     public boolean ejecutarInsert(String tabla, ContentValues registro) {
         try {
+            // Objeto para lectura y escritura en la base de datos
             bd = this.getWritableDatabase();
+
+            /*null es los campos que no se van a registrar, y rertona -1 si hubo error*/
             int res = (int) bd.insert(tabla, null, registro);
             cerrarConexion();
-
             if (res != -1) {
                 return true;
             } else {
@@ -77,6 +89,10 @@ public class Conexion extends SQLiteOpenHelper {
     public boolean ejecutarDelete(String tabla, String condicion) {
         bd = this.getWritableDatabase();
 
+        /*Si la clausula del where - Condicion esta con ?, en este otro parametro
+        se envian los datos,
+        * por ejemplo:
+        * db.delete("tablename","id=? and name=?",new String[]{"1","jack"});*/
         int cant = bd.delete(tabla, condicion, null);
         cerrarConexion();
 
@@ -87,12 +103,14 @@ public class Conexion extends SQLiteOpenHelper {
         }
     }
 
-    public boolean ejecutarUpdate(String tabla, String condicion,
-                                  ContentValues registro) {
+
+    public boolean ejecutarUpdate(String tabla, String condicion, ContentValues registro) {
         try {
+
             bd = this.getWritableDatabase();
 
             int cant = bd.update(tabla, registro, condicion, null);
+
             cerrarConexion();
 
             if (cant == 1) {
@@ -108,8 +126,12 @@ public class Conexion extends SQLiteOpenHelper {
 
     public Cursor ejecutarSearch(String consulta) {
         try {
+            // Objeto para lectura y escritura en la base de datos
             bd = this.getWritableDatabase();
-
+            /* Definimos un objeto de tipo cursor que almacena la info de la
+             base de datos, ademas ejecutamos una consulta sql
+            En el null se especifican los parametros, dado el caso que en
+            el SQL no, como con */
             Cursor fila = bd.rawQuery(consulta, null);
             return fila;
 

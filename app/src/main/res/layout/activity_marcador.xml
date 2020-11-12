@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MarcadorActivity"
+        android:gravity="center"
+>
+
+    <EditText
+        android:id="@+id/txtNombreMarcador"
+        android:layout_width="160dp"
+        android:layout_height="36dp"
+        android:background="@drawable/input_redondo"
+        android:hint="nombre"
+        android:inputType="textPersonName"
+        android:padding="5dp" />
+
+    <EditText
+            android:id="@+id/txtDescrpcionMarcador"
+            android:layout_width="160dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="60dp"
+            android:padding="5dp"
+            android:hint="descripcion"
+            android:background="@drawable/input_redondo"
+            android:inputType="textPersonName"
+    />
+
+    <Spinner
+            android:id="@+id/spnColores"
+            android:layout_width="160dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="60dp"
+    />
+
+    <Button
+            android:id="@+id/btnAccionMarcador"
+            android:layout_width="160dp"
+            android:layout_height="36dp"
+            android:text="guardar"
+            android:textAllCaps="false"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/darkkhaki"
+        />
+</LinearLayout>

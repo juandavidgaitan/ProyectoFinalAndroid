@@ -19,6 +19,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.veterinaria.Controller.CtlUser;
+import com.example.veterinaria.Modelo.ClsCliente;
 import com.example.veterinaria.Modelo.ClsVeterinaria;
 
 import org.json.JSONArray;
@@ -47,12 +49,14 @@ public class MainActivity extends AppCompatActivity {
         txtUsuario = (EditText) findViewById(R.id.txtUsuario);
         txtContrasena = (EditText) findViewById(R.id.txtContrasena);
         btnIngresar = (Button) findViewById(R.id.btnIngresar);
+        ClsCliente userActivo = null;
+
 
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginVeterinaria ("http://192.168.1.13/veterinaria/LoginVeterinaria.php?usuario=" + txtUsuario.getText() + ""+"&contrasena="+ txtContrasena.getText()+"");
-                LoginCliente ("http://192.168.1.13/veterinaria/LoginCliente.php?usuario=" + txtUsuario.getText() + ""+"&contrasena="+ txtContrasena.getText()+"");
+                LoginVeterinaria ("http://192.168.0.5/veterinaria/LoginVeterinaria.php?usuario=" + txtUsuario.getText() + ""+"&contrasena="+ txtContrasena.getText());
+                LoginCliente ("http://192.168.0.5/veterinaria/LoginCliente.php?usuario=" + txtUsuario.getText() + ""+"&contrasena="+ txtContrasena.getText()+"");
 
 
             }
@@ -63,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void valirdarCliente(String URL) {
+    private void validarCliente(String URL) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -136,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     Intent intent = new Intent(getApplicationContext(), MenuCliente.class);
+
                     startActivity(intent);
 
                 }
