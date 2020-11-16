@@ -17,11 +17,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap;
     Bundle bundle;
@@ -29,14 +30,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     CtlMarcador ctlMarcador;
     boolean marcadorActivo = false, recibioDatos = false;
     LatLng latLngActivo;
- /*
-    //accelerometro
-    private static final float LIMITE_SENSIBILIDAD_SACUDIDA = 2.1f;
-    private static final int LIMITE_TIEMPO_SACUDIDA = 250;
-    private SensorManager sensorManager;
-    private Sensor sensorAcelerometro, sensorProximidad;
-    private long tiempoSacudida = 0;
-*/
+    private Marker markerPrueba;
+
+    private final LatLng EAM = new LatLng(4.541763, -75.663464); // posicion de
+
     //posicion
     double latitudActual;
     double longitudActual;
@@ -50,16 +47,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         ctlMarcador = new CtlMarcador(this);
+        recibirDatos();
 
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMapClickListener(this);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(EAM, 18));
         mMap.getUiSettings().setZoomControlsEnabled(false);
-
+        markerPrueba = googleMap.addMarker(new MarkerOptions().position(EAM).title("EAM"));
+        googleMap.setOnMarkerClickListener(this);
         if (recibioDatos) {
-          /*  listarMarcadores();*/
+            listarMarcadores();
             if (marcadorActivo) {
                 latLngActivo = new LatLng(bundle.getDouble("latitud"), bundle.getDouble("longitud"));
                 moverCamara(latLngActivo, 5);
@@ -71,6 +71,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     //cuando hago click en alguna parte del mapa
     @Override
     public void onMapClick(LatLng latLng) {
+        mMap.clear();
+        Marker mark;
+        mark = mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
+                .title("Ubicacion Seleccionada").snippet("Ya puedes guardar este punto"));
         vistaMarcador(latLng);
     }
 
@@ -80,7 +84,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         i.putExtra("latitud", latLng.latitude);
         i.putExtra("longitud", latLng.longitude);
         i.putExtra("estadoAccion", false);
-        i.putExtra("userActivo", (Parcelable) userActivo);
+
         startActivity(i);
         finish();
     }
@@ -88,20 +92,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     //recibir datos desde otra vista
     private void recibirDatos() {
         bundle = getIntent().getExtras();
-        userActivo = (ClsCliente) bundle.getSerializable("userActivo");
-        marcadorActivo = bundle.getBoolean("marcadorActivo");
+
+
         recibioDatos = true;
     }
 
     //para agregar marcadores si tiene el usuario
-   /* private void listarMarcadores(){
-        List<Marcador> marcadores = ctlMarcador.listarPuntosUsuario(userActivo.getUsuario());
-        for (Marcador p : marcadores){
-            agregarMarcador(p);
-        }
-    }*/
+   private void listarMarcadores() {
+       List<Marcador> marcadores = ctlMarcador.listarPuntosUsuario();
+       for (Marcador p : marcadores) {
+           agregarMarcador(p);
+       }
+   }
 
     private void agregarMarcador(Marcador marcador){
+
         LatLng latLng = new LatLng(marcador.getLatitud(), marcador.getLongitud());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
@@ -133,8 +138,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
                 break;
         }
-        mMap.addMarker(markerOptions);
+        mMap.addMarker(new MarkerOptions().position(new LatLng(marcador.getLatitud(),
+                marcador.getLongitud())));
     }
+
 
     private void moverCamara(LatLng latLng, float zoom){
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
@@ -142,9 +149,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void vistaListaMarcadores(View v) {
         Intent i = new Intent(this, ListaMarcadoresActivity.class);
-        i.putExtra("userActivo", (Parcelable) userActivo);
+
         startActivity(i);
         finish();
     }
 
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        return false;
+    }
 }

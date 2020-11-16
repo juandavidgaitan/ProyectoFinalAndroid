@@ -40,7 +40,7 @@ public class ListaMarcadoresActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         ctlMarca = new CtlMarcador(this);
         bundle = getIntent().getExtras();
-        userActivo = (ClsCliente) bundle.getSerializable("userActivo");
+//        userActivo = (ClsCliente) bundle.getSerializable("userActivo");
         listar();
 
 
@@ -70,13 +70,13 @@ public class ListaMarcadoresActivity extends AppCompatActivity {
         finish();
     }
 
-    private void listar(){
+    private void listar() {
         listaMarcadores = ctlMarca.listarPuntosUsuario();
         final AdaptadorRecyclerMarcador adaptador = new AdaptadorRecyclerMarcador(listaMarcadores, getApplicationContext(), new AdaptadorRecyclerMarcador.AdaptadorRecyclerMarcadorListener() {
             @Override
             public void eliminarMarcador(View v, int posicion) {
                 try {
-                    imprimir(""+posicion);
+                    imprimir("" + posicion);
 
                     listaMarcadores.remove(posicion);
 
