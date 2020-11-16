@@ -87,12 +87,12 @@ public class ListaMarcadoresActivity extends AppCompatActivity {
 
             @Override
             public void modificarMarcador(View v, int posicion) {
-                /*Intent i = new Intent(getApplicationContext(), MarcadorActivity.class);
+                Intent i = new Intent(getApplicationContext(), MarcadorActivity.class);
                 i.putExtra("estadoAccion", true);
-                i.putExtra("userActivo", (Parcelable) userActivo);
+
                 i.putExtra("modificar", listaMarcadores.get(posicion));
                 startActivity(i);
-                finish();*/
+                finish();
             }
         });
         recyclerView.setAdapter(adaptador);

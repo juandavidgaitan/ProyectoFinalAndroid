@@ -32,4 +32,11 @@ public class MenuCliente extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void ListarVete(View view) {
+
+        Intent intent = new Intent(this, ListaMarcadoresActivity.class);
+        startActivity(intent);
+
+    }
 }

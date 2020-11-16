@@ -43,6 +43,7 @@
                 android:layout_marginLeft="24dp"
                 android:background="@drawable/borde_redondo"
                 android:drawableLeft="@drawable/portapapeles"
+                android:onClick="ListarVete"
                 android:text="Lista de veterinarias" />
 
             <Button

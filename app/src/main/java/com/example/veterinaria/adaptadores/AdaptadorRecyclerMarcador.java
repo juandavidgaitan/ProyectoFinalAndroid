@@ -1,9 +1,12 @@
 package com.example.veterinaria.adaptadores;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -34,7 +37,7 @@ public class AdaptadorRecyclerMarcador extends RecyclerView.Adapter<AdaptadorRec
     @NonNull
     @Override
     public MarcadoresViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_marcador, null, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_element, null, false);
         view.setOnClickListener(this);
         return new MarcadoresViewHolder(view);
     }
@@ -42,10 +45,14 @@ public class AdaptadorRecyclerMarcador extends RecyclerView.Adapter<AdaptadorRec
 
     @Override
     public void onBindViewHolder(@NonNull MarcadoresViewHolder holder, int position) {
-        holder.lblNombre.setText(listaMarcadores.get(position).getNombre());
+   holder.binData(listaMarcadores.get(position));
+
+      /*  holder.lblNombre.setText(listaMarcadores.get(position).getNombre());
         holder.lblDescripcion.setText(listaMarcadores.get(position).getDescripcion());
         holder.lblColor.setText(listaMarcadores.get(position).getColor());
+    */
     }
+
 
     @Override
     public int getItemCount() {
@@ -65,34 +72,23 @@ public class AdaptadorRecyclerMarcador extends RecyclerView.Adapter<AdaptadorRec
 
 
     public class MarcadoresViewHolder extends RecyclerView.ViewHolder {
-        //CircleImageView btnEliminar, btnEditar;
+       ImageView iconImage;
         TextView lblNombre, lblDescripcion, lblColor;
 
         public MarcadoresViewHolder(@NonNull View itemView) {
             super(itemView);
+            iconImage = itemView.findViewById(R.id.iconImageView);
             lblNombre = itemView.findViewById(R.id.lblNombreMarcador);
             lblDescripcion = itemView.findViewById(R.id.lblDescripcionMarcador);
             lblColor = itemView.findViewById(R.id.lblColorMarcador);
-         //   btnEliminar = itemView.findViewById(R.id.btnEliminarMarcador);
-         //   btnEditar = itemView.findViewById(R.id.btnEditarMarcador);
 
-         /*  btnEliminar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listenerBotones.eliminarMarcador(v, getAdapterPosition());
-                    listaMarcadores.remove(getAdapterPosition());
-                    notifyItemRemoved(getLayoutPosition());
-                    notifyItemRangeChanged(getAdapterPosition(), 1);
-                    notifyDataSetChanged();
-                }
-            });
+        }
 
-            btnEditar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listenerBotones.modificarMarcador(v, getAdapterPosition());
-                }
-            });*/
+        void binData(final Marcador item){
+         //   iconImage.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
+            lblNombre.setText(item.getNombre());
+            lblColor.setText(item.getColor());
+            lblDescripcion.setText(item.getDescripcion());
         }
     }
 
