@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class Conexion extends SQLiteOpenHelper {
 
-    private static final String database = "veterinaria.db";
+    private static final String database = "veterinaria1.db";
     /*Para manipular el registro que retorna la DB*/
     private static final SQLiteDatabase.CursorFactory factory = null;
     private static final int version = 1;
@@ -39,21 +39,22 @@ public class Conexion extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table user(user text primary key, " +
+       /* db.execSQL("create table user(user text primary key, " +
                 "cedula text," +
                 "nombres text," +
                 "apellidos text," +
                 "correo text," +
                 "telefono text," +
                 "usuario text, " +
-                "password text)");
+                "password text)");*/
+
         db.execSQL("create table marcador(nombre text, " +
                 "descripcion text," +
                 "color text, " +
                 "latitud numeric," +
-                "longitud numeric," +
-                "usuario text," +
-                "FOREIGN KEY(usuario) REFERENCES user(usuario) ON DELETE CASCADE)");
+                "longitud numeric)") ;
+                /*"usuario text," +
+                "FOREIGN KEY(usuario) REFERENCES user(usuario) ON DELETE CASCADE)");*/
     }
 
     @Override

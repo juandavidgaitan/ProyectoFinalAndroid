@@ -8,23 +8,23 @@ public class Marcador implements Serializable {
     private String color;
     private double latitud;
     private double longitud;
-    private String usuario;
+    /*private String usuario;*/
 
     public Marcador() {
     }
 
     public Marcador(String nombre, String usuario) {
         this.nombre = nombre;
-        this.usuario = usuario;
+        /*this.usuario = usuario;*/
     }
 
-    public Marcador(String nombre, String descripcion, String color, double latitud, double longitud, String usuario) {
+    public Marcador(String nombre, String descripcion, String color, double latitud, double longitud /*String usuario*/) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.color = color;
         this.latitud = latitud;
         this.longitud = longitud;
-        this.usuario = usuario;
+        /*this.usuario = usuario;*/
     }
 
     public String getNombre() {
@@ -67,13 +67,13 @@ public class Marcador implements Serializable {
         this.longitud = longitud;
     }
 
-    public String getUsuario() {
+   /* public String getUsuario() {
         return usuario;
     }
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
-    }
+    }*/
 
     @Override
     public String toString() {
@@ -83,7 +83,8 @@ public class Marcador implements Serializable {
                 ", color='" + color + '\'' +
                 ", latitud=" + latitud +
                 ", longitud=" + longitud +
-                ", usuario='" + usuario + '\'' +
+
+                /* ", usuario='" + usuario + '\'' +*/
                 '}';
     }
 }

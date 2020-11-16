@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginVeterinaria ("http://192.168.0.5/veterinaria/LoginVeterinaria.php?usuario=" + txtUsuario.getText() + ""+"&contrasena="+ txtContrasena.getText());
+                LoginVeterinaria ("http://192.168.1.13/veterinaria/LoginVeterinaria.php?usuario=" + txtUsuario.getText() + ""+"&contrasena="+ txtContrasena.getText());
                 LoginCliente ("http://192.168.0.5/veterinaria/LoginCliente.php?usuario=" + txtUsuario.getText() + ""+"&contrasena="+ txtContrasena.getText()+"");
 
 

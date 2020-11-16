@@ -34,7 +34,7 @@ public class CtlMarcador {
         }
     }
 
-    public void eliminar(Marcador marcador) throws Exception {
+    /*public void eliminar(Marcador marcador) throws Exception {
         if (dao.eliminar(marcador)) {
             throw new Exception("se elimino con exito");
         }else{
@@ -52,13 +52,13 @@ public class CtlMarcador {
                 throw new Exception("");
             }
         }
-    }
+    }*/
 
     public Marcador buscar(Marcador marcador) {
         return dao.buscar(marcador);
     }
 
-    public List<Marcador> listarPuntosUsuario(String usuario) {
-        return dao.listarPuntosUsuario(usuario);
+    public List<Marcador> listarPuntosUsuario() {
+        return dao.listarPuntosUsuario();
     }
 }

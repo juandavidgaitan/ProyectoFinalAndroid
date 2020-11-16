@@ -85,12 +85,12 @@ public class MarcadorActivity extends AppCompatActivity  {
                     marcador.setNombre(nombre);
                     marcador.setDescripcion(descripcion);
                     marcador.setColor(color);
-                    marcador.setUsuario(userActivo.getUsuario());
+                   /* marcador.setUsuario(userActivo.getUsuario());*/
                     if (estadoAccion){
                         //modificar
                         imprimir(marcador.toString());
                         try {
-                            ctlMarcador.actualizar(marcador);
+                           /* ctlMarcador.actualizar(marcador);*/
                         } catch (Exception e) {
                             imprimir(e.getMessage());
                         }

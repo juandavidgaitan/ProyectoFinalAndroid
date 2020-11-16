@@ -71,13 +71,13 @@ public class ListaMarcadoresActivity extends AppCompatActivity {
     }
 
     private void listar(){
-        listaMarcadores = ctlMarca.listarPuntosUsuario(userActivo.getUsuario());
+        listaMarcadores = ctlMarca.listarPuntosUsuario();
         final AdaptadorRecyclerMarcador adaptador = new AdaptadorRecyclerMarcador(listaMarcadores, getApplicationContext(), new AdaptadorRecyclerMarcador.AdaptadorRecyclerMarcadorListener() {
             @Override
             public void eliminarMarcador(View v, int posicion) {
                 try {
                     imprimir(""+posicion);
-                    ctlMarca.eliminar(listaMarcadores.get(posicion));
+
                     listaMarcadores.remove(posicion);
 
                 } catch (Exception e) {
@@ -87,12 +87,12 @@ public class ListaMarcadoresActivity extends AppCompatActivity {
 
             @Override
             public void modificarMarcador(View v, int posicion) {
-                Intent i = new Intent(getApplicationContext(), MarcadorActivity.class);
+                /*Intent i = new Intent(getApplicationContext(), MarcadorActivity.class);
                 i.putExtra("estadoAccion", true);
                 i.putExtra("userActivo", (Parcelable) userActivo);
                 i.putExtra("modificar", listaMarcadores.get(posicion));
                 startActivity(i);
-                finish();
+                finish();*/
             }
         });
         recyclerView.setAdapter(adaptador);

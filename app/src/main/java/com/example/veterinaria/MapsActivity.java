@@ -59,7 +59,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.getUiSettings().setZoomControlsEnabled(false);
 
         if (recibioDatos) {
-            listarMarcadores();
+          /*  listarMarcadores();*/
             if (marcadorActivo) {
                 latLngActivo = new LatLng(bundle.getDouble("latitud"), bundle.getDouble("longitud"));
                 moverCamara(latLngActivo, 5);
@@ -94,12 +94,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     //para agregar marcadores si tiene el usuario
-    private void listarMarcadores(){
+   /* private void listarMarcadores(){
         List<Marcador> marcadores = ctlMarcador.listarPuntosUsuario(userActivo.getUsuario());
         for (Marcador p : marcadores){
             agregarMarcador(p);
         }
-    }
+    }*/
 
     private void agregarMarcador(Marcador marcador){
         LatLng latLng = new LatLng(marcador.getLatitud(), marcador.getLongitud());
