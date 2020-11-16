@@ -60,7 +60,7 @@ public class RegistrarCliente extends AppCompatActivity implements Response.List
     }
 
     public void RegistrarCliente(View view) {
-        String url = "http://192.168.0.4/veterinaria/wsJSONRegistroCliente.php?cedula=" + txtCedula.getText().toString() +
+        String url = "http://192.168.1.13/veterinaria/wsJSONRegistroCliente.php?cedula=" + txtCedula.getText().toString() +
                 "&nombre=" + txtNombre.getText().toString() + "&apellido=" + txtApellido.getText().toString() +
                 "&correo=" + txtCorreo.getText().toString() + "&telefono=" + txtTelefono.getText().toString() + "&usuario=" + txtUsuario.getText().toString() + "&contrasena=" + txtContrasena.getText().toString();
 

@@ -16,11 +16,11 @@
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="33dp"
+            android:layout_marginTop="3dp"
             android:gravity="center"
-            android:text="Registrar cliente"
+            android:text="Cliente"
             android:textColor="#FFFFFF"
-            android:textSize="25dp"
-            android:layout_marginTop="3dp"/>
+            android:textSize="25dp" />
 
         <EditText
             android:id="@+id/txtCedula"
@@ -167,6 +167,7 @@
             android:background="@drawable/round_bg1"
             android:onClick="BuscarClientes"
             android:text="Buscar"
+            android:textColor="#FFFFFF"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -182,6 +183,7 @@
             android:background="@drawable/round_bg1"
             android:onClick="ActualizarCliente"
             android:text="Modificar"
+            android:textColor="#FFFFFF"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -197,6 +199,7 @@
             android:background="@drawable/round_bg1"
             android:onClick="Eliminarcliente"
             android:text="Eliminar"
+            android:textColor="#FFFFFF"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

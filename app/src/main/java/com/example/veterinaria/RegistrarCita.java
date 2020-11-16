@@ -85,27 +85,27 @@ public class RegistrarCita  extends AppCompatActivity  {
         btnRegistrarCita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RegistrarCita("http://192.168.0.4/veterinaria/RegistrarCita.php");
+                RegistrarCita("http://192.168.1.13/veterinaria/RegistrarCita.php");
             }
         });
         btnBuscarcita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarCita("http://192.168.0.4/veterinaria/BuscarCita.php?id_cita=" + txtId_cita.getText()+"");
+                BuscarCita("http://192.168.1.13/veterinaria/BuscarCita.php?id_cita=" + txtId_cita.getText()+"");
             }
         });
 
         btnBuscarVeterinaria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarVeterinaria("http://192.168.0.4/veterinaria/BuscarVeterinaria.php?nit_veterinaria=" + txtNit_Veterinaria.getText()+"");
+                BuscarVeterinaria("http://192.168.1.13/veterinaria/BuscarVeterinaria.php?nit_veterinaria=" + txtNit_Veterinaria.getText()+"");
             }
         });
 
         btnBuscarMascota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarMascota("http://192.168.0.4/veterinaria/BuscarMascota.php?id_mascota=" + txtMascotaid.getText()+"");
+                BuscarMascota("http://192.168.1.13/veterinaria/BuscarMascota.php?id_mascota=" + txtMascotaid.getText()+"");
             }
         });
     }
@@ -274,7 +274,7 @@ public class RegistrarCita  extends AppCompatActivity  {
     public void ActualizarCita (View view){
 
 
-        String url="http://192.168.0.4/veterinaria/wsJSONUpdateCita.php?";
+        String url="http://192.168.1.13/veterinaria/wsJSONUpdateCita.php?";
 
 
         stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -327,7 +327,7 @@ public class RegistrarCita  extends AppCompatActivity  {
 
     public void EliminarCita (View view){
 
-        String url = "http://192.168.0.4/veterinaria/wsJSONADeleteCita.php?id_cita="+txtId_cita.getText().toString();
+        String url = "http://192.168.1.13/veterinaria/wsJSONADeleteCita.php?id_cita="+txtId_cita.getText().toString();
 
         stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override

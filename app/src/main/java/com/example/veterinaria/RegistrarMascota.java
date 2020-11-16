@@ -71,14 +71,14 @@ CtlGuardarMascota guardarMascota;
         btnRegistrarMascota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RegistrarMascota("http://192.168.0.4/veterinaria/RegistrarMascota.php");
+                RegistrarMascota("http://192.168.1.13/veterinaria/RegistrarMascota.php");
             }
         });
 
         btnBuscarMascota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarMascotaTodo("http://192.168.0.4/veterinaria/BuscarMascota.php?id_mascota=" + txtId_mascota.getText()+"");
+                BuscarMascotaTodo("http://192.168.1.13/veterinaria/BuscarMascota.php?id_mascota=" + txtId_mascota.getText()+"");
             }
         });
 
@@ -86,7 +86,7 @@ CtlGuardarMascota guardarMascota;
         request = Volley.newRequestQueue(getBaseContext());
     }
     public void BuscarCliente(View view) {
-        String url = "http://192.168.0.4/veterinaria/wsJSONBuscarCliente.php?cedula=" + txtDueno.getText().toString();
+        String url = "http://192.168.1.13/veterinaria/wsJSONBuscarCliente.php?cedula=" + txtDueno.getText().toString();
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         request.add(jsonObjectRequest);
 
@@ -169,7 +169,7 @@ CtlGuardarMascota guardarMascota;
     }
 
     public void ActualizarMascota (View view){
-        String url="http://192.168.0.4/veterinaria/wsJSONUpdateMascota.php?";
+        String url="http://192.168.1.13/veterinaria/wsJSONUpdateMascota.php?";
 
         stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -261,7 +261,7 @@ CtlGuardarMascota guardarMascota;
 
     public void EliminarMascota(View view){
 
-        String url = "http://192.168.0.4/veterinaria/wsJSONADeleteMascota.php?id_mascota="+txtId_mascota.getText().toString();
+        String url = "http://192.168.1.13/veterinaria/wsJSONADeleteMascota.php?id_mascota="+txtId_mascota.getText().toString();
 
         stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override

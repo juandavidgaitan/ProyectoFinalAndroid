@@ -68,14 +68,14 @@ public class RegistrarServicios extends AppCompatActivity{
         btnRegistrarServicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RegistrarServicio("http://192.168.0.4/veterinaria/RegistrarServicio.php");
+                RegistrarServicio("http://192.168.1.13/veterinaria/RegistrarServicio.php");
             }
         });
 
         btnBuscarServicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarServicio("http://192.168.0.4/veterinaria/BuscarServicio.php?id_servicio=" + txtId_servicio.getText()+"");
+                BuscarServicio("http://192.168.1.13/veterinaria/BuscarServicio.php?id_servicio=" + txtId_servicio.getText()+"");
             }
         });
 
@@ -83,7 +83,7 @@ public class RegistrarServicios extends AppCompatActivity{
         btnBuscarVe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarVeteT("http://192.168.0.4/veterinaria/BuscarVeterinaria.php?nit_veterinaria=" + txtNit_Veterinaria.getText() + "");
+                BuscarVeteT("http://192.168.1.13/veterinaria/BuscarVeterinaria.php?nit_veterinaria=" + txtNit_Veterinaria.getText() + "");
             }
         });
     }
@@ -212,7 +212,7 @@ public class RegistrarServicios extends AppCompatActivity{
     public void ActualizarServicio (View view){
 
 
-        String url="http://192.168.0.4/veterinaria/wsJSONUpdateServicio.php?";
+        String url="http://192.168.1.13/veterinaria/wsJSONUpdateServicio.php?";
 
 
         stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -263,7 +263,7 @@ public class RegistrarServicios extends AppCompatActivity{
 
     public void EliminarServicio (View view){
 
-        String url = "http://192.168.0.4/wsJSONADeleteServicio.php?id_servicio="+txtId_servicio.getText().toString();
+        String url = "http://192.168.1.13/wsJSONADeleteServicio.php?id_servicio="+txtId_servicio.getText().toString();
 
         stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override

@@ -68,15 +68,16 @@
             android:layout_width="338dp"
             android:layout_height="wrap_content"
 
-            android:text="Buscar mascota"
-
             android:layout_marginStart="32dp"
+
             android:layout_marginTop="0.5dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_bg1"
+            android:padding="14dp"
+            android:text="Buscar mascota"
+            android:textColor="#FFFFFF"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:padding="14dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -129,10 +130,11 @@
             android:layout_marginTop="0.5dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_bg1"
+            android:padding="14dp"
             android:text="Buscar veterinaria"
+            android:textColor="#FFFFFF"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:padding="14dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -206,6 +208,7 @@
             android:background="@drawable/round_bg1"
             android:padding="14dp"
             android:text="Registrar cita"
+            android:textColor="#FFFFFF"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -219,9 +222,10 @@
             android:layout_marginTop="0.5dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_bg1"
-            android:text="Buscar cita"
-            android:textSize="15sp"
             android:padding="14dp"
+            android:text="Buscar cita"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -237,6 +241,7 @@
             android:onClick="ActualizarCita"
             android:padding="14dp"
             android:text="Modificar cita"
+            android:textColor="#FFFFFF"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -252,6 +257,7 @@
             android:background="@drawable/round_bg1"
             android:onClick="EliminarCita"
             android:text="Eliminar cita"
+            android:textColor="#FFFFFF"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
