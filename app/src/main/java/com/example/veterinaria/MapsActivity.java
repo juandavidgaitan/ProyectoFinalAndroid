@@ -148,7 +148,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void vistaListaMarcadores(View v) {
-        Intent i = new Intent(this, ListaMarcadoresActivity.class);
+        Intent i = new Intent(this, ListaMarcadoresVeteActivity.class);
 
         startActivity(i);
         finish();

@@ -22,7 +22,7 @@ import java.util.List;
 
 
 public class AdaptadorRecyclerMarcador extends RecyclerView.Adapter<AdaptadorRecyclerMarcador.MarcadoresViewHolder> implements View.OnClickListener {
-
+    private List<String> listaPuntosUsuarioString;
     public List<Marcador> listaMarcadores;
     private View.OnClickListener listener;
     public Context context;

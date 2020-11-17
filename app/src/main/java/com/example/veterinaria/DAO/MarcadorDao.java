@@ -15,7 +15,7 @@ public class MarcadorDao {
 
     Conexion conex;
 
-    public MarcadorDao(Activity activity){
+    public MarcadorDao(Activity activity) {
         conex = new Conexion(activity);
     }
 
@@ -26,17 +26,17 @@ public class MarcadorDao {
         registro.put("color", marcador.getColor());
         registro.put("latitud", marcador.getLatitud());
         registro.put("longitud", marcador.getLongitud());
-       /* registro.put("usuario", marcador.getUsuario());*/
+        /* registro.put("usuario", marcador.getUsuario());*/
         return conex.ejecutarInsert("marcador", registro);
     }
 
     public Marcador buscar(Marcador marcador) {
-        Marcador p= null;
-        String consulta = "select descripcion, color, latitud, longitud from punto where nombre = '" + marcador.getNombre()+ "'";
+        Marcador p = null;
+        String consulta = "select descripcion, color, latitud, longitud from marcador where nombre = '" + marcador.getNombre() + "'";
         Cursor temp = conex.ejecutarSearch(consulta);
         if (temp.getCount() > 0) {
             temp.moveToFirst();
-            p =  new Marcador(marcador.getNombre(), temp.getString(0), temp.getString(1), temp.getDouble(2), temp.getDouble(3));
+            p = new Marcador(marcador.getNombre(), temp.getString(0), temp.getString(1), temp.getDouble(2), temp.getDouble(3));
         }
         conex.cerrarConexion();
         return p;
@@ -64,12 +64,24 @@ public class MarcadorDao {
         Cursor temp = conex.ejecutarSearch(consulta);
         if (temp.moveToFirst()) {
             do {
-                Marcador marcador =  new Marcador(temp.getString(4), temp.getString(0), temp.getString(1), temp.getDouble(2), temp.getDouble(3));
+                Marcador marcador = new Marcador(temp.getString(4), temp.getString(0), temp.getString(1), temp.getDouble(2), temp.getDouble(3));
                 lista.add(marcador);
             } while (temp.moveToNext());
         }
         return lista;
     }
 
+    public List<String > listarPuntosUsuarioString() {
+        List<String> lista = new ArrayList<>();
 
+        String consulta = "select * from marcador";
+        Cursor temp = conex.ejecutarSearch(consulta);
+
+        if (temp.moveToFirst()) {
+            do {
+                lista.add("Nombre: " + temp.getString(1) + " Descripcion: " + temp.getString(2) + " Color: " + temp.getString(3));
+            } while (temp.moveToNext());
+        }
+        return lista;
+    }
 }

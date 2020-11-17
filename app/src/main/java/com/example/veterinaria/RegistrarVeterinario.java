@@ -317,5 +317,8 @@ public class RegistrarVeterinario extends AppCompatActivity   {
     }
 
 
-
+    public  void Regresar(View view){
+        Intent intent = new Intent(this, MenuVeterinaria.class);
+        startActivity(intent);
+    }
 }

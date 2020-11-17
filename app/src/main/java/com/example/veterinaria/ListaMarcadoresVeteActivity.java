@@ -1,21 +1,14 @@
 package com.example.veterinaria;
 
-import android.content.Context;
-import android.content.Intent;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.example.veterinaria.Controller.CtlMarcador;
 import com.example.veterinaria.Modelo.ClsCliente;
@@ -24,7 +17,8 @@ import com.example.veterinaria.adaptadores.AdaptadorRecyclerMarcador;
 
 import java.util.List;
 
-public class ListaMarcadoresActivity extends AppCompatActivity {
+public class ListaMarcadoresVeteActivity extends AppCompatActivity {
+
 
     List<Marcador> listaMarcadores;
     private List<String> listaPuntosUsuarioString;
@@ -68,8 +62,8 @@ public class ListaMarcadoresActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-    //    intent.putExtra("userActivo", (Parcelable) userActivo);
-     //   intent.putExtra("marcadorActivo", false);
+        //    intent.putExtra("userActivo", (Parcelable) userActivo);
+        //   intent.putExtra("marcadorActivo", false);
         startActivity(intent);
         finish();
     }
@@ -111,11 +105,11 @@ public class ListaMarcadoresActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Marcador marcador = listaMarcadores.get(recyclerView.getChildAdapterPosition(v));
-                Intent i = new Intent(getApplicationContext(), MostrarVeterinariaActivity.class);
+                Intent i = new Intent(getApplicationContext(), MapsActivity.class);
                 i.putExtra("latitud", marcador.getLatitud());
                 i.putExtra("longitud", marcador.getLongitud());
 
-        //        i.putExtra("marcadorActivo", true);
+                //        i.putExtra("marcadorActivo", true);
                 startActivity(i);
                 finish();
             }
@@ -124,7 +118,7 @@ public class ListaMarcadoresActivity extends AppCompatActivity {
 
     }
     public  void Regresar(View view){
-        Intent intent = new Intent(this, MenuCliente.class);
+        Intent intent = new Intent(this, MenuVeterinaria.class);
         startActivity(intent);
     }
 

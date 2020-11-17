@@ -10,7 +10,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <Space
             android:layout_width="match_parent"
@@ -62,11 +64,11 @@
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
             android:ems="10"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
             android:hint="Nombre veterinaria"
             android:inputType="textPersonName"
             android:padding="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -80,14 +82,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
             android:ems="10"
             android:hint="Direccion"
             android:inputType="textPersonName"
             android:padding="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -100,8 +102,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
@@ -109,6 +109,8 @@
             android:hint="Telefono"
             android:inputType="number"
             android:padding="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -124,12 +126,12 @@
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
             android:ems="10"
             android:hint="Usuario"
             android:inputType="textPersonName"
             android:padding="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -144,20 +146,21 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
             android:drawablePadding="16dp"
             android:ems="10"
             android:hint="Contraseña"
             android:inputType="textPersonName"
             android:padding="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
 
             app:layout_constraintStart_toStartOf="parent" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="32dp" />
+            android:layout_height="12dp" />
+
 
         <Button
             android:id="@+id/btnRegistra"
@@ -175,20 +178,32 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="15dp" />
-
         <Button
             android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="3dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_bg1"
             android:onClick="Volver"
             android:text="Volver"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btnRegresar"
+            android:layout_width="338dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/round_bg1"
+            android:onClick="Regresar"
+            android:text="Regresar"
             android:textColor="#FFFFFF"
             android:textSize="15sp"
             android:textStyle="bold"

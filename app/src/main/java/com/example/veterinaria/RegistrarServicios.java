@@ -301,4 +301,9 @@ public class RegistrarServicios extends AppCompatActivity{
         request.add(stringRequest);
         VolleySingleton.getIntanciaVolley(getApplicationContext()).addToRequestQueue(stringRequest);
     }
+
+    public  void Regresar(View view){
+        Intent intent = new Intent(this, MenuVeterinaria.class);
+        startActivity(intent);
+    }
 }

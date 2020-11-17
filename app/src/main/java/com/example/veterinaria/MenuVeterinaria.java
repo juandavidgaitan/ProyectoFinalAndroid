@@ -31,4 +31,18 @@ public class MenuVeterinaria extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void ListarCitas(View view) {
+
+        Intent intent = new Intent(this, ListaCitasActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void Salir(View view) {
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
+    }
 }

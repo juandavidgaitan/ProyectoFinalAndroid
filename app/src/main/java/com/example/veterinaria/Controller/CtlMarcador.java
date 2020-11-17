@@ -12,8 +12,17 @@ public class CtlMarcador {
 
     MarcadorDao dao;
 
+    public static Marcador marcador;
+
     public CtlMarcador(Activity activity) {
         dao = new MarcadorDao(activity);
+    }
+
+    public static Marcador getMarcador(){
+        return marcador;
+    }
+    public static void setMarcador(Marcador marcador) {
+        CtlMarcador.marcador = marcador;
     }
 
     public boolean registrar(Marcador marcador) throws Exception {
@@ -54,6 +63,8 @@ public class CtlMarcador {
         }
     }*/
 
+
+
     public Marcador buscar(Marcador marcador) {
         return dao.buscar(marcador);
     }
@@ -61,4 +72,6 @@ public class CtlMarcador {
     public List<Marcador> listarPuntosUsuario() {
         return dao.listarPuntosUsuario();
     }
+
+    public List<String> listarPuntosUsuarioString(){return  dao.listarPuntosUsuarioString();}
 }

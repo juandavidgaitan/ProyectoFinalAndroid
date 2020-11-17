@@ -50,7 +50,7 @@ public class MarcadorActivity extends AppCompatActivity  {
         llenarSpinner();
         bundle = getIntent().getExtras();
         estadoAccion = bundle.getBoolean("estadoAccion");
-        userActivo = (ClsCliente) bundle.getSerializable("userActivo");
+   //     userActivo = (ClsCliente) bundle.getSerializable("userActivo");
 
         if(estadoAccion){
             btnAccion.setText("editar");
@@ -80,7 +80,7 @@ public class MarcadorActivity extends AppCompatActivity  {
                 String descripcion = txtDescripcion.getText().toString();
                 String color = spnColores.getSelectedItem().toString();
                 if(nombre.isEmpty() || descripcion.isEmpty()){
-                    imprimir("debe llenar bien los datos");
+                    imprimir("Se deben llenar bien los datos");
                 }else{
                     marcador.setNombre(nombre);
                     marcador.setDescripcion(descripcion);
@@ -95,7 +95,6 @@ public class MarcadorActivity extends AppCompatActivity  {
                             imprimir(e.getMessage());
                         }
                         Intent intent = new Intent(getApplicationContext(), ListaMarcadoresActivity.class);
-                        intent.putExtra("userActivo", (Parcelable) userActivo);
                         startActivity(intent);
                         finish();
                     }else{
@@ -105,8 +104,7 @@ public class MarcadorActivity extends AppCompatActivity  {
                                 Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
                                 intent.putExtra("latitud", marcador.getLatitud());
                                 intent.putExtra("longitud", marcador.getLongitud());
-                                intent.putExtra("userActivo", (Parcelable) userActivo);
-                                intent.putExtra("marcadorActivo", true);
+
                                 startActivity(intent);
                                 finish();
                             }else {
@@ -138,13 +136,13 @@ public class MarcadorActivity extends AppCompatActivity  {
         super.onBackPressed();
         if(estadoAccion){
             Intent intent = new Intent(getApplicationContext(), ListaMarcadoresActivity.class);
-            intent.putExtra("userActivo", (Parcelable) userActivo);
+            //intent.putExtra("userActivo", (Parcelable) userActivo);
             startActivity(intent);
             finish();
         }else{
             Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-            intent.putExtra("userActivo", (Parcelable) userActivo);
-            intent.putExtra("marcadorActivo", false);
+          //  intent.putExtra("userActivo", (Parcelable) userActivo);
+          intent.putExtra("marcadorActivo", false);
             startActivity(intent);
             finish();
         }

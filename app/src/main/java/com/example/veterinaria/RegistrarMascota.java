@@ -300,6 +300,10 @@ CtlGuardarMascota guardarMascota;
         request.add(stringRequest);
         VolleySingleton.getIntanciaVolley(getApplicationContext()).addToRequestQueue(stringRequest);
     }
+    public  void Regresar(View view){
+        Intent intent = new Intent(this, MenuCliente.class);
+        startActivity(intent);
+    }
 
 
 }

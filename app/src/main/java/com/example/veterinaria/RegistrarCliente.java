@@ -109,4 +109,8 @@ public class RegistrarCliente extends AppCompatActivity implements Response.List
         startActivity(intent);
 
     }
+    public  void Regresar(View view){
+        Intent intent = new Intent(this, MenuCliente.class);
+        startActivity(intent);
+    }
 }

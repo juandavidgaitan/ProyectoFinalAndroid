@@ -2,6 +2,7 @@ package com.example.veterinaria;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -210,6 +211,10 @@ public class BuscarCliente extends AppCompatActivity implements Response.Listene
         });
         request.add(stringRequest);
         VolleySingleton.getIntanciaVolley(getApplicationContext()).addToRequestQueue(stringRequest);
+    }
+    public  void Regresar(View view){
+        Intent intent = new Intent(this, MenuCliente.class);
+        startActivity(intent);
     }
 }
 
