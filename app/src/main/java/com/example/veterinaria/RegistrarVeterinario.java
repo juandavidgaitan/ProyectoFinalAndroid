@@ -56,7 +56,7 @@ public class RegistrarVeterinario extends AppCompatActivity   {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_veterinario);
-        txtNit_Veterinaria = (EditText) findViewById(R.id.txtNit_veterinaria);
+        txtNit_Veterinaria = (EditText) findViewById(R.id.txtDireccionVe);
         txtVeterinaria = (EditText) findViewById(R.id.txtNombreVeterinaria);
         txtNombreVete = (EditText) findViewById(R.id.txtNombrevete);
         txtCedula = (EditText) findViewById(R.id.txtCedula);
@@ -72,20 +72,20 @@ public class RegistrarVeterinario extends AppCompatActivity   {
         btnRegistarVeterinario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RegistrarVeterinario("http://192.168.0.4/veterinaria/RegistrarVeterinario.php");
+                RegistrarVeterinario("http://192.168.1.13/veterinaria/RegistrarVeterinario.php");
             }
         });
 
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarVete("http://192.168.0.4/veterinaria/BuscarVeterinaria.php?nit_veterinaria=" + txtNit_Veterinaria.getText()+"");
+                BuscarVete("http://192.168.1.13/veterinaria/BuscarVeterinaria.php?nombre=" + txtVeterinaria.getText()+"");
             }
         });
         btnBuscarVeterinario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarVeterinario("http://192.168.0.4/veterinaria/BuscarVeterinario.php?cedula=" + txtCedula.getText()+"");
+                BuscarVeterinario("http://192.168.1.13/veterinaria/BuscarVeterinario.php?cedula=" + txtCedula.getText()+"");
             }
         });
     }
@@ -105,7 +105,7 @@ public class RegistrarVeterinario extends AppCompatActivity   {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         jsonObject = response.getJSONObject(i);
-                        txtVeterinaria.setText(jsonObject.getString("nombre"));
+                        txtNit_Veterinaria.setText(jsonObject.getString("nit_veterinaria"));
 
                     } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();

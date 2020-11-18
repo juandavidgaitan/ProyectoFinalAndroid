@@ -36,7 +36,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button35"
+                android:id="@+id/btnListar"
                 android:layout_width="174dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"

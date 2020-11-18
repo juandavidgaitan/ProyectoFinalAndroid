@@ -36,6 +36,7 @@ public class RegistrarCita  extends AppCompatActivity  {
     /*veterinaria*/
     EditText txtNit_Veterinaria;
     EditText txtVeterinaria;
+    EditText txtDireccion;
 
     /*mascota*/
     EditText txtMascotaid;
@@ -66,12 +67,13 @@ public class RegistrarCita  extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_cita);
 
-        txtNit_Veterinaria = (EditText) findViewById(R.id.txtNitVeterinaria);
+
         txtVeterinaria = (EditText) findViewById(R.id.txtVeterinaria);
         txtMascotaid = (EditText) findViewById(R.id.txtNit_veterinaria);
         txtNombre = (EditText) findViewById(R.id.txtNombreMascota);
         txtDescripcion = (EditText) findViewById(R.id.txtDescripcion);
         txtHora = (EditText) findViewById(R.id.txtHora);
+        txtDireccion = (EditText) findViewById(R.id.txtDireccionVetes);
         txtId_cita = (EditText) findViewById(R.id.txtId_cita);
         btnBuscarVeterinaria=(Button) findViewById(R.id.btnBuscarVeterinaria);
         btnBuscarMascota=(Button) findViewById(R.id.BuscarMascota);
@@ -85,27 +87,27 @@ public class RegistrarCita  extends AppCompatActivity  {
         btnRegistrarCita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RegistrarCita("http://192.168.0.4/veterinaria/RegistrarCita.php");
+                RegistrarCita("http://192.168.1.13/veterinaria/RegistrarCita.php");
             }
         });
         btnBuscarcita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarCita("http://192.168.0.4/veterinaria/BuscarCita.php?id_cita=" + txtId_cita.getText()+"");
+                BuscarCita("http://192.168.1.13/veterinaria/BuscarCita.php?id_cita=" + txtId_cita.getText()+"");
             }
         });
 
         btnBuscarVeterinaria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarVeterinaria("http://192.168.0.4/veterinaria/BuscarVeterinaria.php?nit_veterinaria=" + txtNit_Veterinaria.getText()+"");
+                BuscarVeterinaria("http://192.168.1.13/veterinaria/BuscarVeterinaria.php?nombre=" + txtVeterinaria.getText()+"");
             }
         });
 
         btnBuscarMascota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarMascota("http://192.168.0.4/veterinaria/BuscarMascota.php?id_mascota=" + txtMascotaid.getText()+"");
+                BuscarMascota("http://192.168.1.13/veterinaria/BuscarMascota.php?id_mascota=" + txtMascotaid.getText()+"");
             }
         });
     }
@@ -121,7 +123,7 @@ public class RegistrarCita  extends AppCompatActivity  {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         jsonObject = response.getJSONObject(i);
-                        txtVeterinaria.setText(jsonObject.getString("nombre"));
+                        txtDireccion.setText(jsonObject.getString("nit_veterinaria"));
 
                     } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -208,7 +210,7 @@ public class RegistrarCita  extends AppCompatActivity  {
                 Map<String, String> parametros = new HashMap<String, String>();
                 parametros.put("id_cita",txtId_cita.getText().toString());
                 parametros.put("mascota_fk",txtMascotaid.getText().toString());
-                parametros.put("veterinaria_fk",txtNit_Veterinaria.getText().toString());
+                parametros.put("veterinaria_fk",txtDireccion.getText().toString());
                 parametros.put("hora",txtHora.getText().toString());
                 parametros.put("descripcion",txtDescripcion.getText().toString());
 
@@ -263,7 +265,7 @@ public class RegistrarCita  extends AppCompatActivity  {
     public void limpiar() {
         txtVeterinaria.setText("");
         txtMascotaid.setText("");
-        txtNit_Veterinaria.setText("");
+        txtDireccion.setText("");
         txtDescripcion.setText("");
         txtHora.setText("");
         txtNombre.setText("");
@@ -274,7 +276,7 @@ public class RegistrarCita  extends AppCompatActivity  {
     public void ActualizarCita (View view){
 
 
-        String url="http://192.168.0.4/veterinaria/wsJSONUpdateCita.php?";
+        String url="http://192.168.1.13/veterinaria/wsJSONUpdateCita.php?";
 
 
         stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -327,7 +329,7 @@ public class RegistrarCita  extends AppCompatActivity  {
 
     public void EliminarCita (View view){
 
-        String url = "http://192.168.0.4/veterinaria/wsJSONADeleteCita.php?id_cita="+txtId_cita.getText().toString();
+        String url = "http://192.168.1.13/veterinaria/wsJSONADeleteCita.php?id_cita="+txtId_cita.getText().toString();
 
         stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override

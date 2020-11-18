@@ -1,48 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".MarcadorActivity"
-        android:gravity="center"
->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#040404"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MarcadorActivity">
 
     <EditText
         android:id="@+id/txtNombreMarcador"
+
+
         android:layout_width="160dp"
         android:layout_height="36dp"
-        android:background="@drawable/input_redondo"
+        android:layout_marginTop="0.5dp"
+        android:background="@drawable/round_border1"
+        android:drawablePadding="16dp"
         android:hint="nombre"
         android:inputType="textPersonName"
-        android:padding="5dp" />
+
+        android:padding="5dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF" />
 
     <EditText
-            android:id="@+id/txtDescrpcionMarcador"
-            android:layout_width="160dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="60dp"
-            android:padding="5dp"
-            android:hint="descripcion"
-            android:background="@drawable/input_redondo"
-            android:inputType="textPersonName"
-    />
+        android:id="@+id/txtDescrpcionMarcador"
+        android:layout_width="160dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="60dp"
+
+        android:background="@drawable/round_border1"
+        android:hint="descripcion"
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF" />
 
     <Spinner
-            android:id="@+id/spnColores"
-            android:layout_width="160dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="60dp"
-    />
+        android:id="@+id/spnColores"
+        android:layout_width="160dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="60dp"
+        android:background="#8D3F5CB5" />
 
     <Button
-            android:id="@+id/btnAccionMarcador"
-            android:layout_width="160dp"
-            android:layout_height="36dp"
-            android:text="guardar"
-            android:textAllCaps="false"
-            android:layout_marginTop="60dp"
-            android:background="@drawable/darkkhaki"
-        />
+        android:id="@+id/btnAccionMarcador"
+        android:layout_width="160dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="60dp"
+
+        android:background="@drawable/round_bg1"
+        android:text="guardar"
+        android:textAllCaps="false" />
 </LinearLayout>

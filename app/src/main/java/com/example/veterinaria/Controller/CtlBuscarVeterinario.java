@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class CtlBuscarVeterinario extends AppCompatActivity implements Response.ErrorListener, Response.Listener<JSONObject> {
 
     EditText txtVeterianria;
-    EditText txtNitVeterinaria;
+    EditText txtDireccion;
 
     RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
@@ -36,13 +36,13 @@ public class CtlBuscarVeterinario extends AppCompatActivity implements Response.
         setContentView(R.layout.activity_main);
 
         txtVeterianria = (EditText) findViewById(R.id.txtVeterinaria);
-        txtNitVeterinaria = (EditText) findViewById(R.id.txtNitVeterinaria);
+        txtDireccion = (EditText) findViewById(R.id.txtDireccionVe);
 
     }
 
 
     public void Buscar(final Context context, ClsVeterinaria ve) {
-        String url = "http://172.20.10.3/veterinaria/wsJSONBuscarVeterinaria.php?nit_veterinaria=" + txtNitVeterinaria.getText().toString();
+        String url = "http://192.168.1.13/veterinaria/wsJSONBuscarVeterinaria.php?nit_veterinaria=" + txtVeterianria.getText().toString();
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         request.add(jsonObjectRequest);
 
