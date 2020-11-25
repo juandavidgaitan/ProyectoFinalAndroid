@@ -72,20 +72,20 @@ public class RegistrarVeterinario extends AppCompatActivity   {
         btnRegistarVeterinario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RegistrarVeterinario("http://192.168.1.13/veterinaria/RegistrarVeterinario.php");
+                RegistrarVeterinario("http://192.168.0.4/veterinaria/RegistrarVeterinario.php");
             }
         });
 
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarVete("http://192.168.1.13/veterinaria/BuscarVeterinaria.php?nombre=" + txtVeterinaria.getText()+"");
+                BuscarVete("http://192.168.0.4/veterinaria/BuscarVeterinaria.php?nombre=" + txtVeterinaria.getText()+"");
             }
         });
         btnBuscarVeterinario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuscarVeterinario("http://192.168.1.13/veterinaria/BuscarVeterinario.php?cedula=" + txtCedula.getText()+"");
+                BuscarVeterinario("http://192.168.0.4/veterinaria/BuscarVeterinario.php?cedula=" + txtCedula.getText()+"");
             }
         });
     }

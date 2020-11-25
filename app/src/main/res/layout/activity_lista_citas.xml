@@ -1,41 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ListaCitasActivity">
 
-    <LinearLayout
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="22dp" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="22dp" />
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Lista de Citas"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/button10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="listar"
-            android:text="Button" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCitas"
+        android:layout_width="382dp"
+        android:layout_height="561dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="15dp">
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Lista de Veterinarias"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+    </androidx.recyclerview.widget.RecyclerView>
 
-        <ListView
-            android:id="@+id/list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <Button
+        android:id="@+id/btnRegresar"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/round_bg1"
+        android:onClick="Regresar"
+        android:text="Regresar"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/btnlist"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/round_bg1"
+        android:onClick="listar"
+        android:text="Listar"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

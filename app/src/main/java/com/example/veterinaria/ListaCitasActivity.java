@@ -1,13 +1,17 @@
 package com.example.veterinaria;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -16,7 +20,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.veterinaria.Controller.CtlCita;
 import com.example.veterinaria.Modelo.ClsCita;
+import com.example.veterinaria.Modelo.Marcador;
+import com.example.veterinaria.adaptadores.AdaptadorRecyclerMarcador;
+import com.example.veterinaria.adaptadores.Adapter;
 
 
 import org.json.JSONArray;
@@ -28,13 +36,12 @@ import java.util.List;
 
 public class ListaCitasActivity extends AppCompatActivity {
 
-    RadioButton r1,r2;
-    EditText txtId_cita,txtHora,txtDescripcion;
-    ListView list;
-    RequestQueue requestQueue;
 
+    TextView txtId_citaCita, txtHoraCita, txtDescripcionCita;
+    RequestQueue requestQueue;
+    RecyclerView recyclerView;
     public static ClsCita clsCita;
-    ArrayList<ClsCita> lista;
+
 
 
 
@@ -42,44 +49,69 @@ public class ListaCitasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_citas);
-        lista = new ArrayList<>();
-        requestQueue= Volley.newRequestQueue(getApplicationContext());
 
-        txtId_cita = findViewById(R.id.txtId_cita);
-        txtHora = findViewById(R.id.txtHora);
-        txtDescripcion = findViewById(R.id.txtDescripcion);
-        list=findViewById(R.id.list);
-
-
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
+        recyclerView = findViewById(R.id.recyclerCitas);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        txtId_citaCita = (TextView) findViewById(R.id.txtId_cita);
+        txtHoraCita = (TextView)findViewById(R.id.txtHora);
+        txtDescripcionCita = (TextView) findViewById(R.id.txtDescripcion);
 
 
     }
 
 
+    public void listar(View view) {
 
-    public void listar(View view){
+        String url = "http://192.168.0.4/veterinaria/listarOmar.php";
+        System.out.println("entro");
 
-        String url ="http://192.168.1.13/veterinaria/wsJSONConsultarListaCita.php";
-
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+        final JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+                System.out.println("entro2");
                 if (response != null) {
-                    for (int i = 0; i < response.length(); i++) {
-                        try {
-                            ClsCita cita = new ClsCita();
-                            JSONObject jsonObject = response.getJSONObject(i);
-                            cita.setId_cita(jsonObject.getString("id_cita"));
-                            cita.setHora(jsonObject.getString("hora"));
-                            cita.setDescripcion(jsonObject.getString("descripcion"));
+                    List<String> listaCitasString= new ArrayList<>();
+                    ArrayList<ClsCita> listaCitas= new ArrayList<>();
+                    try {
+                        JSONObject jsonObject = null;
+                        System.out.println("entro al objeto");
+                        for (int i = 0; i < response.length(); i++) {
 
-                            lista.add(cita);
-                            Toast.makeText(ListaCitasActivity.this, "" + response.toString(), Toast.LENGTH_SHORT).show();
-                        } catch (JSONException e) {
-                            Toast.makeText(ListaCitasActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                            if (response.getJSONObject(i) != null) {
+                                jsonObject = response.getJSONObject(i);
+                                try {
+                                    System.out.println("entro4");
+                                    ClsCita cita = new ClsCita();
+
+                                    cita.setId_cita(jsonObject.getString("id_cita"));
+                                    cita.setHora(jsonObject.getString("hora"));
+                                    cita.setDescripcion(jsonObject.getString("descripcion"));
+
+                                    listaCitas.add(cita);
+                                    listaCitasString.add("id_cita" + jsonObject.getString("id_cita") + " hora " +
+                                            jsonObject.getString("hora") + "descripcion" +
+                                            jsonObject.getString("descripcion"));
+
+
+                                    Toast.makeText(ListaCitasActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
+
+                                } catch (JSONException e) {
+                                    Toast.makeText(ListaCitasActivity.this, "el error " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ListaCitasActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+
                         }
+                        System.out.println("entro5");
+
+                        verlista(listaCitas);
+                    } catch (Exception e) {
+                        System.out.println(e.toString());
                     }
-                    verlista();
+
                 } else {
                     Toast.makeText(ListaCitasActivity.this, "No se encontro nada", Toast.LENGTH_SHORT).show();
                 }
@@ -88,24 +120,56 @@ public class ListaCitasActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ListaCitasActivity.this, "este es el error " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                System.out.println("entr6");
+                Toast.makeText(ListaCitasActivity.this, "el error " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+        System.out.println("entr7");
         requestQueue.add(jsonArrayRequest);
+        System.out.println("entr8");
         requestQueue = Volley.newRequestQueue(this);
 
     }
 
-    public void verlista(){
-        list.setAdapter(null);
-        ArrayAdapter<Object> adapter = new ArrayAdapter<Object>(this, android.R.layout.simple_list_item_1, lista.toArray());
-        list.setAdapter(adapter);
+
+    public void verlista(final ArrayList <ClsCita>listaCitas) {
+        System.out.println("entr9");
+        ArrayAdapter<Object> adapter = new ArrayAdapter<Object>(this, android.R.layout.simple_list_item_1, listaCitas.toArray());
+        System.out.println("entr10");
+      Adapter adaptador = new Adapter(getApplicationContext(), listaCitas) {
+
+
+        };
+        recyclerView.setAdapter(new Adapter(this.getApplicationContext(),listaCitas));
+        System.out.println("entr11");
+        adaptador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    System.out.println("entr12");
+                    Intent i = new Intent(getApplicationContext(), ListaCitasActivity.class);
+                    ClsCita cita = listaCitas.get(recyclerView.getChildAdapterPosition(v));
+
+                    i.putExtra("veterinaria_fk", cita.getVeterinaria_fk());
+                    i.putExtra("mascota_fk", cita.getMascota_fk());
+                    //        i.putExtra("marcadorActivo", true);
+                    startActivity(i);
+                    System.out.println("entr13");
+                    finish();
+                    System.out.println("entr14");
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                }
+
+            }
+        });
+
+    }
+
+    public void Regresar(View view) {
+        Intent intent = new Intent(this, MenuVeterinaria.class);
+        startActivity(intent);
     }
 
 
-
-
-    }
-
-
-
+}

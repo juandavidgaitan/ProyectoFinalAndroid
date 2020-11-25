@@ -21,13 +21,10 @@
             android:text="Registrar veterinario"
             android:textColor="#FFFFFF"
             android:textSize="25dp" />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="12dp" />
 
         <EditText
             android:id="@+id/txtNombreVeterinaria"
-
+            android:layout_marginTop="7dp"
             android:ems="10"
             android:hint="Nombre veterinaria"
             android:inputType="textPersonName"
@@ -36,8 +33,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:enabled="true"
-
-            android:layout_marginTop="0.5dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
@@ -51,8 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-
-            android:layout_marginTop="0.5dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
@@ -60,43 +54,36 @@
             android:hint="Id veterinaria"
             android:inputType="textPersonName"
             android:enabled="false"
-
             android:padding="12dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="12dp" />
 
         <Button
             android:id="@+id/btnBuscar"
             android:layout_width="338dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0.5dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_bg1"
             android:padding="10dp"
             android:textColor="#FFFFFF"
-
             android:text="Buscar Veterinaria"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="12dp" />
+
 
         <EditText
             android:id="@+id/txtCedula"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0.5dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
@@ -104,7 +91,6 @@
             android:hint="Cedula"
             android:inputType="number"
             android:padding="12dp"
-
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
@@ -115,7 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0.5dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
@@ -134,7 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0.5dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
@@ -142,7 +128,6 @@
             android:hint="Apellidos"
             android:inputType="textPersonName"
             android:padding="12dp"
-
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
@@ -161,7 +146,6 @@
             android:hint="Edad"
             android:inputType="number"
             android:padding="12dp"
-
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
@@ -172,7 +156,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0.5dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
@@ -180,7 +164,6 @@
             android:hint="Correo"
             android:inputType="textPersonName"
             android:padding="12dp"
-
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
@@ -191,7 +174,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0.5dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
@@ -199,43 +182,34 @@
             android:hint="Salario"
             android:inputType="textPersonName"
             android:padding="12dp"
-
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="12dp" />
+
 
         <Button
             android:id="@+id/btnRegstrarVeterinario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0.5dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_bg1"
             android:padding="10dp"
             android:text="Registrar veterinario"
             android:textSize="15sp"
             android:textColor="#FFFFFF"
-
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="12dp" />
-
-
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="66dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="7dp" >
 
             <Button
                 android:id="@+id/btnBuscarVeterinario"
@@ -274,16 +248,14 @@
 
 
         </LinearLayout>
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="12dp" />
-
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="66dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="7dp"
+            >
 
             <Button
                 android:id="@+id/button27"

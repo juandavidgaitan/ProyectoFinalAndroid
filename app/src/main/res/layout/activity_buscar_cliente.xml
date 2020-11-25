@@ -10,13 +10,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="33dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="Cliente"
             android:textColor="#FFFFFF"
@@ -25,16 +27,14 @@
         <EditText
             android:id="@+id/txtCedula"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:ems="10"
-            android:hint="Cedula"
-            android:layout_marginTop="3dp"
+            android:layout_height="50dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
-
+            android:ems="10"
+            android:hint="Cedula"
             android:inputType="number"
             android:padding="16dp"
             android:textColor="#FFFFFF"
@@ -45,14 +45,14 @@
         <EditText
             android:id="@+id/txtNombres"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
             android:ems="10"
             android:hint="Nombres"
-            android:layout_marginTop="3dp"
 
             android:inputType="textPersonName"
             android:padding="16dp"
@@ -64,14 +64,14 @@
         <EditText
             android:id="@+id/txtApellidos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
             android:ems="10"
             android:hint="Apellidos"
-            android:layout_marginTop="3dp"
 
             android:inputType="textPersonName"
             android:padding="16dp"
@@ -83,11 +83,11 @@
         <EditText
             android:id="@+id/txtCorreo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
-            android:layout_marginTop="3dp"
             android:drawablePadding="16dp"
             android:ems="10"
             android:hint="Correo"
@@ -102,12 +102,12 @@
         <EditText
             android:id="@+id/txtTelefono"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
-            android:layout_marginTop="3dp"
             android:ems="10"
             android:hint="Telefono"
 
@@ -121,12 +121,12 @@
         <EditText
             android:id="@+id/txtUsuario"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
-            android:layout_marginTop="3dp"
             android:ems="10"
             android:hint="Usuario"
 
@@ -142,10 +142,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
-            android:layout_marginTop="3dp"
             android:ems="10"
             android:hint="Contrasena"
 
@@ -156,69 +156,91 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/button"
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="32dp"
+            android:layout_height="12dp" />
 
-            android:background="@drawable/round_bg1"
-            android:onClick="BuscarClientes"
-            android:text="Buscar"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/button7"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/round_bg1"
-            android:onClick="ActualizarCliente"
-            android:text="Modificar"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_height="103dp"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button14"
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="152dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="32dp"
+
+                android:background="@drawable/round_bg1"
+                android:onClick="BuscarClientes"
+                android:text="Buscar"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="152dp"
+                android:layout_height="66dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/round_bg1"
+                android:onClick="ActualizarCliente"
+                android:text="Modificar"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/round_bg1"
-            android:onClick="Eliminarcliente"
-            android:text="Eliminar"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_height="79dp"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnRegresar"
-            android:layout_width="338dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/round_bg1"
-            android:onClick="Regresar"
-            android:text="Regresar"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+
+            <Button
+                android:id="@+id/button14"
+                android:layout_width="152dp"
+                android:layout_height="66dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/round_bg1"
+                android:onClick="Eliminarcliente"
+                android:text="Eliminar"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/btnRegresar"
+                android:layout_width="152dp"
+                android:layout_height="66dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/round_bg1"
+                android:onClick="Regresar"
+                android:text="Regresar"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </LinearLayout>
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

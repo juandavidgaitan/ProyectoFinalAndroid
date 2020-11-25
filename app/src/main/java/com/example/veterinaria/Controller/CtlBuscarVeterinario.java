@@ -42,7 +42,7 @@ public class CtlBuscarVeterinario extends AppCompatActivity implements Response.
 
 
     public void Buscar(final Context context, ClsVeterinaria ve) {
-        String url = "http://192.168.1.13/veterinaria/wsJSONBuscarVeterinaria.php?nit_veterinaria=" + txtVeterianria.getText().toString();
+        String url = "http://192.168.0.4/veterinaria/wsJSONBuscarVeterinaria.php?nit_veterinaria=" + txtVeterianria.getText().toString();
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         request.add(jsonObjectRequest);
 

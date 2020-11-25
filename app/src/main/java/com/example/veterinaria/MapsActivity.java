@@ -32,12 +32,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LatLng latLngActivo;
     private Marker markerPrueba;
 
-    private final LatLng EAM = new LatLng(4.541763, -75.663464); // posicion de
+    private final LatLng EAM = new LatLng(4.536307, -75.6723751);
 
-    //posicion
-    double latitudActual;
-    double longitudActual;
-    float zoomActual=0;
+
     boolean cargooMapa=false;
 
     @Override
@@ -54,15 +51,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMapClickListener(this);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(EAM, 18));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(EAM, 14));
         mMap.getUiSettings().setZoomControlsEnabled(false);
-        markerPrueba = googleMap.addMarker(new MarkerOptions().position(EAM).title("EAM"));
         googleMap.setOnMarkerClickListener(this);
         if (recibioDatos) {
             listarMarcadores();
             if (marcadorActivo) {
                 latLngActivo = new LatLng(bundle.getDouble("latitud"), bundle.getDouble("longitud"));
-                moverCamara(latLngActivo, 5);
+                moverCamara(latLngActivo, 14);
             }
         }
         cargooMapa=true;
@@ -73,18 +69,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapClick(LatLng latLng) {
         mMap.clear();
         Marker mark;
-        mark = mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
-                .title("Ubicacion Seleccionada").snippet("Ya puedes guardar este punto"));
+        mark = mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
         vistaMarcador(latLng);
     }
 
     private void vistaMarcador(LatLng latLng){
         Intent i = new Intent(this, MarcadorActivity.class);
-
         i.putExtra("latitud", latLng.latitude);
         i.putExtra("longitud", latLng.longitude);
         i.putExtra("estadoAccion", false);
-
         startActivity(i);
         finish();
     }
@@ -92,8 +85,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     //recibir datos desde otra vista
     private void recibirDatos() {
         bundle = getIntent().getExtras();
-
-
         recibioDatos = true;
     }
 
@@ -139,7 +130,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 break;
         }
         mMap.addMarker(new MarkerOptions().position(new LatLng(marcador.getLatitud(),
-                marcador.getLongitud())));
+                marcador.getLongitud())).draggable(true).snippet(marcador.getDescripcion()).title(marcador.getNombre()).icon(BitmapDescriptorFactory.fromResource(R.drawable.veterinary)));
     }
 
 

@@ -16,6 +16,7 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
             android:gravity="center"
             android:text="Agendar cita"
             android:textColor="#FFFFFF"
@@ -25,13 +26,11 @@
             android:id="@+id/txtNit_veterinaria"
             android:layout_width="338dp"
             android:layout_height="wrap_content"
-
             android:ems="10"
             android:hint="id mascota"
-
             android:inputType="number"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
@@ -47,7 +46,7 @@
             android:layout_width="338dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0.5dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
@@ -67,10 +66,8 @@
             android:id="@+id/BuscarMascota"
             android:layout_width="338dp"
             android:layout_height="wrap_content"
-
             android:layout_marginStart="32dp"
-
-            android:layout_marginTop="0.5dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_bg1"
             android:padding="14dp"
@@ -86,7 +83,7 @@
             android:layout_width="338dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0.5dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
@@ -94,8 +91,6 @@
             android:enabled="true"
             android:hint="Veterinaria"
             android:inputType="textPersonName"
-
-
             android:padding="10dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
@@ -108,7 +103,7 @@
             android:layout_width="338dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0.5dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
@@ -128,7 +123,7 @@
             android:layout_width="338dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="0.5dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_bg1"
             android:padding="14dp"
@@ -145,7 +140,7 @@
             android:layout_width="338dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
@@ -163,7 +158,7 @@
             android:layout_width="338dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="16dp"
@@ -183,7 +178,7 @@
             android:layout_width="338dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_border1"
             android:drawablePadding="10dp"
@@ -198,77 +193,106 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/btnRegistrarCita"
-            android:layout_width="338dp"
-            android:layout_height="wrap_content"
 
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="0.5dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/round_bg1"
-            android:padding="14dp"
-            android:text="Registrar cita"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp" >
+
+
 
         <Button
-            android:id="@+id/btnBuscarCita"
-            android:layout_width="338dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="0.5dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/round_bg1"
-            android:padding="14dp"
-            android:text="Buscar cita"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+                android:id="@+id/btnRegistrarCita"
+                android:layout_width="141dp"
+                android:layout_height="66dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="-11dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/round_bg1"
+                android:padding="14dp"
+                android:text="Registrar cita"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/btnBuscarCita"
+                android:layout_width="141dp"
+                android:layout_height="66dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="-1dp"
+                android:background="@drawable/round_bg1"
+                android:padding="14dp"
+                android:text="Buscar cita"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="7dp" >
+
 
         <Button
-            android:id="@+id/button18"
-            android:layout_width="338dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="0.5dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/round_bg1"
-            android:onClick="ActualizarCita"
-            android:padding="14dp"
-            android:text="Modificar cita"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+                android:id="@+id/button18"
+                android:layout_width="141dp"
+                android:layout_height="66dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="-8.7dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/round_bg1"
+                android:onClick="ActualizarCita"
+                android:padding="14dp"
+                android:text="Modificar cita"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/button17"
-            android:layout_width="338dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="0.5dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/round_bg1"
-            android:onClick="EliminarCita"
-            android:text="Eliminar cita"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <Button
+                android:id="@+id/button17"
+                android:layout_width="141dp"
+                android:layout_height="66dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="-1dp"
+                android:background="@drawable/round_bg1"
+                android:onClick="EliminarCita"
+                android:text="Eliminar cita"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
         <Button
             android:id="@+id/btnRegresar"
             android:layout_width="338dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/round_bg1"
             android:onClick="Regresar"
