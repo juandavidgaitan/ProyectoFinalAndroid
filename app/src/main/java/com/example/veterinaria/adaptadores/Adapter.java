@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,8 +53,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MiViewholder> implemen
 
     }
 
-    public void setOnClickListener(View.OnClickListener listener){
-        this.listener=listener;
+    public void setOnClickListener(View.OnClickListener listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -62,7 +64,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MiViewholder> implemen
 
     @Override
     public void onClick(View v) {
-        if (listener!=null){
+        if (listener != null) {
             listener.onClick(v);
         }
 
@@ -75,28 +77,42 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MiViewholder> implemen
         TextView lblDescripcionCita;
         TextView lblVeterinariaCita;
         TextView lblNombreMascotaCita;
+        TextView lblNomveta;
+        Button btnBorrar;
 
         public MiViewholder(@NonNull View itemView) {
             super(itemView);
             lblIdCitaC = itemView.findViewById(R.id.txtId_cita);
             lblHoraCita = itemView.findViewById(R.id.txtHoraCita);
             lblDescripcionCita = itemView.findViewById(R.id.txtDescripcionCita);
-            lblVeterinariaCita = itemView.findViewById(R.id.txtNombreVeterinariaCita);
-            lblNombreMascotaCita = itemView.findViewById(R.id.txtnombreRegistroMascota);
+            btnBorrar = itemView.findViewById(R.id.btnBorrar);
+
+           /* btnBorrar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listenerBotonoes.eliminarMarcador(v, getAdapterPosition());
+                    citaList.remove(getAdapterPosition());
+                    notifyItemRemoved(getLayoutPosition());
+                    notifyItemRangeChanged(getAdapterPosition(), 1);
+                    notifyDataSetChanged();
+                }
+            });*/
+
         }
 
-        void  binData(final ClsCita item){
+        void binData(final ClsCita item) {
             lblIdCitaC.setText(item.getId_cita());
             lblDescripcionCita.setText(item.getDescripcion());
             lblHoraCita.setText(item.getHora());
-            lblVeterinariaCita.setText(item.getVeterinaria_fk());
-            lblNombreMascotaCita.setText(item.getMascota_fk());
+
+
         }
 
     }
 
-    public interface AdaptadorRecyclerCitasListener{
+    public interface AdaptadorRecyclerCitasListener {
         void eliminarMarcador(View v, int posicion);
+
         void modificarMarcador(View v, int posicion);
     }
 }

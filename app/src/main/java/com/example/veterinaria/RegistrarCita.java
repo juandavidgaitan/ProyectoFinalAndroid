@@ -209,6 +209,7 @@ public class RegistrarCita  extends AppCompatActivity  {
 
                 Map<String, String> parametros = new HashMap<String, String>();
                 parametros.put("id_cita",txtId_cita.getText().toString());
+                parametros.put("nombre",txtNombre.getText().toString());
                 parametros.put("mascota_fk",txtMascotaid.getText().toString());
                 parametros.put("veterinaria_fk",txtDireccion.getText().toString());
                 parametros.put("hora",txtHora.getText().toString());

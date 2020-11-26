@@ -58,6 +58,7 @@ CtlGuardarMascota guardarMascota;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_mascota);
 
+
         txtNombreDueno = (EditText) findViewById(R.id.txtNombreDueno);
         txtDueno = (EditText) findViewById(R.id.txtDueno);
         txtNombre = (EditText) findViewById(R.id.txtNit_veterinaria);

@@ -1,6 +1,7 @@
 package com.example.veterinaria;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -40,9 +42,10 @@ public class ListaCitasActivity extends AppCompatActivity {
     TextView txtId_citaCita, txtHoraCita, txtDescripcionCita;
     RequestQueue requestQueue;
     RecyclerView recyclerView;
+
     public static ClsCita clsCita;
-
-
+    ArrayList<ClsCita> listaCitas;
+    private Button borrar;
 
 
     @Override
@@ -54,14 +57,19 @@ public class ListaCitasActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerCitas);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         txtId_citaCita = (TextView) findViewById(R.id.txtId_cita);
-        txtHoraCita = (TextView)findViewById(R.id.txtHora);
+        txtHoraCita = (TextView) findViewById(R.id.txtHora);
         txtDescripcionCita = (TextView) findViewById(R.id.txtDescripcion);
+        borrar = findViewById(R.id.btnBorrar);
+        listar();
+        listaCitas = new ArrayList<>();
 
 
     }
+  public  void borrar(View view){
+        listaCitas.remove(recyclerView);
+  }
 
-
-    public void listar(View view) {
+    public void listar() {
 
         String url = "http://192.168.0.4/veterinaria/listarOmar.php";
         System.out.println("entro");
@@ -71,8 +79,8 @@ public class ListaCitasActivity extends AppCompatActivity {
             public void onResponse(JSONArray response) {
                 System.out.println("entro2");
                 if (response != null) {
-                    List<String> listaCitasString= new ArrayList<>();
-                    ArrayList<ClsCita> listaCitas= new ArrayList<>();
+                    List<String> listaCitasString = new ArrayList<>();
+                    ArrayList<ClsCita> listaCitas = new ArrayList<>();
                     try {
                         JSONObject jsonObject = null;
                         System.out.println("entro al objeto");
@@ -95,7 +103,7 @@ public class ListaCitasActivity extends AppCompatActivity {
                                             jsonObject.getString("descripcion"));
 
 
-                                    Toast.makeText(ListaCitasActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
+                                    /* Toast.makeText(ListaCitasActivity.this, response.toString(), Toast.LENGTH_SHORT).show();*/
 
                                 } catch (JSONException e) {
                                     Toast.makeText(ListaCitasActivity.this, "el error " + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -132,15 +140,15 @@ public class ListaCitasActivity extends AppCompatActivity {
     }
 
 
-    public void verlista(final ArrayList <ClsCita>listaCitas) {
+    public void verlista(final ArrayList<ClsCita> listaCitas) {
         System.out.println("entr9");
         ArrayAdapter<Object> adapter = new ArrayAdapter<Object>(this, android.R.layout.simple_list_item_1, listaCitas.toArray());
         System.out.println("entr10");
-      Adapter adaptador = new Adapter(getApplicationContext(), listaCitas) {
+        Adapter adaptador = new Adapter(getApplicationContext(), listaCitas) {
 
 
         };
-        recyclerView.setAdapter(new Adapter(this.getApplicationContext(),listaCitas));
+        recyclerView.setAdapter(new Adapter(this.getApplicationContext(), listaCitas));
         System.out.println("entr11");
         adaptador.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,6 +158,7 @@ public class ListaCitasActivity extends AppCompatActivity {
                     Intent i = new Intent(getApplicationContext(), ListaCitasActivity.class);
                     ClsCita cita = listaCitas.get(recyclerView.getChildAdapterPosition(v));
 
+                    i.putExtra("nombre", cita.getVeterinaria_fk());
                     i.putExtra("veterinaria_fk", cita.getVeterinaria_fk());
                     i.putExtra("mascota_fk", cita.getMascota_fk());
                     //        i.putExtra("marcadorActivo", true);

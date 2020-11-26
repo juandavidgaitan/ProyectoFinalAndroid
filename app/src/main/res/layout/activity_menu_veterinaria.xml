@@ -107,7 +107,7 @@
             android:layout_marginLeft="1dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/borde_redondo"
-            android:drawableLeft="@drawable/actualizar"
+            android:drawableLeft="@drawable/salida"
             android:onClick="Salir"
             android:text="SALIR" />
 

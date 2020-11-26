@@ -80,14 +80,14 @@ public class AdaptadorRecyclerMarcador extends RecyclerView.Adapter<AdaptadorRec
             iconImage = itemView.findViewById(R.id.iconImageView);
             lblNombre = itemView.findViewById(R.id.lblNombreMarcador);
             lblDescripcion = itemView.findViewById(R.id.lblDescripcionMarcador);
-            lblColor = itemView.findViewById(R.id.lblColorMarcador);
+
 
         }
 
         void binData(final Marcador item){
          //   iconImage.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
             lblNombre.setText(item.getNombre());
-            lblColor.setText(item.getColor());
+
             lblDescripcion.setText(item.getDescripcion());
         }
     }

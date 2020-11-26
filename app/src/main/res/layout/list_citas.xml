@@ -31,7 +31,7 @@
                 android:layout_gravity="center"
                 android:paddingLeft="14dp"
                 android:paddingRight="14dp"
-                app:srcCompat="@drawable/ic_home_work_black_24dp" />
+                app:srcCompat="@drawable/veterinario" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -46,6 +46,12 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Identificador de la Cita" />
+
+                <TextView
                     android:id="@+id/txtId_cita"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -56,33 +62,50 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/textView111"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hora de la Cita" />
+
+                <TextView
                     android:id="@+id/txtHoraCita"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hora"
-                    android:textSize="18sp" />
-                <TextView
-                    android:id="@+id/txtnombreRegistroMascota"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nombre Mascota"
-                    android:textSize="18sp" />
-                <TextView
-                    android:id="@+id/txtNombreVeterinariaCita"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Veterinaria"
-                    android:textSize="18sp" />
+                    android:text="Hora Cita"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"/>
 
+                <TextView
+                    android:id="@+id/textView210"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Descripcion de la Cita" />
                 <TextView
                     android:id="@+id/txtDescripcionCita"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Direccion"
-                    android:textSize="18sp" />
+                    android:textColor="@android:color/black"
+                    android:text="Drescripcion cita"
+                    android:textSize="24sp"
+                    android:textStyle="bold"/>
+
+
 
             </LinearLayout>
 
+            <Button
+                android:id="@+id/btnBorrar"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="260dp"
+                android:layout_marginTop="41dp"
+                android:background="@drawable/round_bg1"
+                android:onClick="borrar"
+                android:text="Atender"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 

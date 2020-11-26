@@ -64,6 +64,7 @@ public class ListaMarcadoresActivity extends AppCompatActivity {
         finish();
     }
 
+
     private void listar() {
         listaMarcadores = ctlMarca.listarPuntosUsuario();
 
@@ -101,7 +102,8 @@ public class ListaMarcadoresActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Marcador marcador = listaMarcadores.get(recyclerView.getChildAdapterPosition(v));
-                Intent i = new Intent(getApplicationContext(), MostrarVeterinariaActivity.class);
+
+                Intent i = new Intent(getApplicationContext(), ListaMarcadoresActivity.class);
                 i.putExtra("latitud", marcador.getLatitud());
                 i.putExtra("longitud", marcador.getLongitud());
 

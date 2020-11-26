@@ -6,8 +6,18 @@ public class ClsCita {
     private String mascota_fk;
     private String hora;
     private String descripcion;
+    private String nombreMascota;
 
     public ClsCita() {
+    }
+
+    public ClsCita(String id_cita, String veterinaria_fk, String mascota_fk, String hora, String descripcion, String nombreMascota) {
+        this.id_cita = id_cita;
+        this.veterinaria_fk = veterinaria_fk;
+        this.mascota_fk = mascota_fk;
+        this.hora = hora;
+        this.descripcion = descripcion;
+        this.nombreMascota = nombreMascota;
     }
 
     public ClsCita(String id_cita, String veterinaria_fk, String mascota_fk, String hora, String descripcion) {
@@ -16,6 +26,14 @@ public class ClsCita {
         this.mascota_fk = mascota_fk;
         this.hora = hora;
         this.descripcion = descripcion;
+    }
+
+    public String getNombreMascota() {
+        return nombreMascota;
+    }
+
+    public void setNombreMascota(String nombreMascota) {
+        this.nombreMascota = nombreMascota;
     }
 
     public String getId_cita() {
