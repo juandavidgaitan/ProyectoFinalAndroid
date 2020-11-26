@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class Conexion extends SQLiteOpenHelper {
 
-    private static final String database = "veterinaria.db";
+    private static final String database = "veterinariasFull.db";
     /*Para manipular el registro que retorna la DB*/
     private static final SQLiteDatabase.CursorFactory factory = null;
     private static final int version = 1;

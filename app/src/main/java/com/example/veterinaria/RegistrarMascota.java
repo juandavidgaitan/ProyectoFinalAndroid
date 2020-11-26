@@ -61,7 +61,7 @@ CtlGuardarMascota guardarMascota;
 
         txtNombreDueno = (EditText) findViewById(R.id.txtNombreDueno);
         txtDueno = (EditText) findViewById(R.id.txtDueno);
-        txtNombre = (EditText) findViewById(R.id.txtNit_veterinaria);
+        txtNombre = (EditText) findViewById(R.id.txtnombreRegistroMascota);
         txtEdad = (EditText) findViewById(R.id.txtVeterinaria);
         txtRaza = (EditText) findViewById(R.id.txtNombreMascota);
         txtId_mascota = (EditText) findViewById(R.id.txtId_mascota);
