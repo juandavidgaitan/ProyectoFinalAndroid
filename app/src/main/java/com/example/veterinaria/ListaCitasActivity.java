@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,10 +22,12 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.veterinaria.Controller.CtlCita;
 import com.example.veterinaria.Modelo.ClsCita;
 import com.example.veterinaria.Modelo.Marcador;
+import com.example.veterinaria.Modelo.VolleySingleton;
 import com.example.veterinaria.adaptadores.AdaptadorRecyclerMarcador;
 import com.example.veterinaria.adaptadores.Adapter;
 
@@ -46,6 +49,8 @@ public class ListaCitasActivity extends AppCompatActivity {
     public static ClsCita clsCita;
     ArrayList<ClsCita> listaCitas;
     private Button borrar;
+    StringRequest stringRequest;
+    RequestQueue request;
 
 
     @Override
@@ -65,13 +70,11 @@ public class ListaCitasActivity extends AppCompatActivity {
 
 
     }
-  public  void borrar(View view){
-        listaCitas.remove(recyclerView);
-  }
+
 
     public void listar() {
 
-        String url = "http://192.168.0.4/veterinaria/listarOmar.php";
+        String url = "http://192.168.1.13/veterinaria/listarOmar.php";
         System.out.println("entro");
 
         final JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
@@ -178,6 +181,49 @@ public class ListaCitasActivity extends AppCompatActivity {
     public void Regresar(View view) {
         Intent intent = new Intent(this, MenuVeterinaria.class);
         startActivity(intent);
+    }
+
+
+
+    public void borrar (View view){
+
+        String url = "http://192.168.1.13/veterinaria/wsJSONADeleteCita.php?id_cita="+txtId_citaCita.getText().toString();
+
+        stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+
+                if (response.trim().equalsIgnoreCase("elimina")){
+                    txtId_citaCita.setText("");
+                    txtHoraCita.setText("");
+                    txtDescripcionCita.setText("");
+
+
+
+                    Toast.makeText(getApplicationContext(),"Se ha Eliminado con exito",Toast.LENGTH_SHORT).show();
+                }else{
+                    if (response.trim().equalsIgnoreCase("noExiste")){
+                        Toast.makeText(getApplicationContext(),"No se encuentra la persona ",Toast.LENGTH_SHORT).show();
+                        Log.i("RESPUESTA: ",""+response);
+                    }else{
+                        Toast.makeText(getApplicationContext(),"No se ha Eliminado ",Toast.LENGTH_SHORT).show();
+                        Log.i("RESPUESTA: ",""+response);
+                    }
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getBaseContext()
+                        ,"No se ha podido conectar",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        request.add(stringRequest);
+        VolleySingleton.getIntanciaVolley(getApplicationContext()).addToRequestQueue(stringRequest);
     }
 
 
